@@ -31,16 +31,19 @@ interface Variables {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Variable_Get")
-  get is ArmResourceRead<Variable>;
+  @externalDocs("http://aka.ms/azureautomationsdk/variableoperations")
+  get is ArmResourceRead<Variable, Error = ErrorResponse>;
 
   /**
    * Create a variable.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Variable_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/variableoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Variable,
-    Request = VariableCreateOrUpdateParameters
+    Request = VariableCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -49,7 +52,12 @@ interface Variables {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Variable_Update")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Variable, PatchModel = VariableUpdateParameters>;
+  @externalDocs("http://aka.ms/azureautomationsdk/variableoperations")
+  update is ArmCustomPatchSync<
+    Variable,
+    PatchModel = VariableUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the variable.
@@ -57,14 +65,23 @@ interface Variables {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Variable_Delete")
-  delete is ArmResourceDeleteSync<Variable, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/variableoperations")
+  delete is ArmResourceDeleteSync<
+    Variable,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of variables.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Variable_ListByAutomationAccount")
-  listByAutomationAccount is ArmResourceListByParent<Variable>;
+  @externalDocs("http://aka.ms/azureautomationsdk/variableoperations")
+  listByAutomationAccount is ArmResourceListByParent<
+    Variable,
+    Error = ErrorResponse
+  >;
 }
 
 @@doc(Variable.name, "The name of variable.");

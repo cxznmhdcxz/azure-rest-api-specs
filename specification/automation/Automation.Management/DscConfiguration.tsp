@@ -7,6 +7,8 @@ import "./AutomationAccount.tsp";
 
 using TypeSpec.Rest;
 using Azure.ResourceManager;
+using Azure.Core;
+using Azure.Core.Traits;
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
@@ -31,6 +33,16 @@ model DscConfiguration
   etag?: string;
 }
 
+/**
+ * The response model for the list configuration operation.
+ */
+model DscConfigurationListResult is Azure.Core.Page<DscConfiguration> {
+  /**
+   * Gets the total number of congifurations matching filter criteria.
+   */
+  totalCount?: int32;
+}
+
 @armResourceOperations
 interface DscConfigurations {
   /**
@@ -47,12 +59,16 @@ interface DscConfigurations {
   #suppress "@azure-tools/typespec-azure-core/no-openapi"
   @operationId("DscConfiguration_CreateOrUpdate")
   @externalDocs("http://aka.ms/azureautomationsdk/configurationoperations")
-  createOrUpdate is ArmResourceCreateOrReplaceAsync<
+  createOrUpdate is Azure.ResourceManager.Legacy.CreateOrReplaceAsync<
     DscConfiguration,
+    DscConfigurationCreateOrUpdateParameters,
     Response = ArmResourceUpdatedResponse<DscConfiguration> | ArmResourceCreatedResponse<DscConfiguration>,
     Error = ErrorResponse
   >;
 
+  /**
+   * Create the configuration identified by configuration name.
+   */
   #suppress "@azure-tools/typespec-azure-core/no-openapi"
   @patch(#{ implicitOptionality: false })
   @operationId("DscConfiguration_Update")
@@ -104,6 +120,7 @@ interface DscConfigurations {
       @query("$inlinecount")
       $inlinecount?: string;
     },
+    Response = ArmResponse<DscConfigurationListResult>,
     Error = ErrorResponse
   >;
 
@@ -121,6 +138,9 @@ interface DscConfigurations {
     OkResponse & {
       @header
       contentType: "text/powershell";
+
+      @bodyRoot
+      type: bytes;
     },
     Error = ErrorResponse
   >;
@@ -130,3 +150,7 @@ interface DscConfigurations {
 @@doc(DscConfiguration.properties,
   "Gets or sets the configuration properties."
 );
+@@doc(DscConfigurationListResult.value,
+  "Gets or sets a list of configurations."
+);
+@@doc(DscConfigurationListResult.nextLink, "Gets or sets the next link.");

@@ -24,6 +24,16 @@ model DscNode is Azure.ResourceManager.ProxyResource<DscNodeProperties> {
   >;
 }
 
+/**
+ * The response model for the list dsc nodes operation.
+ */
+model DscNodeListResult is Azure.Core.Page<DscNode> {
+  /**
+   * Gets the total number of nodes matching filter criteria.
+   */
+  totalCount?: int32;
+}
+
 @armResourceOperations
 interface DscNodes {
   /**
@@ -93,6 +103,7 @@ interface DscNodes {
       @query("$inlinecount")
       $inlinecount?: string;
     },
+    Response = ArmResponse<DscNodeListResult>,
     Error = ErrorResponse
   >;
 
@@ -104,6 +115,7 @@ interface DscNodes {
   @list
   @get
   @action("reports")
+  @externalDocs("http://aka.ms/azureautomationsdk/dscnodereportoperations")
   listByNode is ArmResourceActionSync<
     DscNode,
     void,
@@ -114,7 +126,8 @@ interface DscNodes {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -166,3 +179,5 @@ interface DscNodes {
 @@doc(DscNodes.update::parameters.properties,
   "Parameters supplied to the update dsc node."
 );
+@@doc(DscNodeListResult.value, "Gets or sets a list of dsc nodes.");
+@@doc(DscNodeListResult.nextLink, "Gets or sets the next link.");

@@ -1237,11 +1237,12 @@ model NodeCountProperties {
 /**
  * Software update configuration properties.
  */
-model SoftwareUpdateConfigurationProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationProperties {
   /**
    * update specific properties for the Software update configuration
    */
-  updateConfiguration: UpdateConfiguration;
+  updateConfiguration: updateConfiguration;
 
   /**
    * Schedule information for the Software update configuration
@@ -1289,13 +1290,14 @@ model SoftwareUpdateConfigurationProperties {
   /**
    * Tasks information for the Software update configuration.
    */
-  tasks?: SoftwareUpdateConfigurationTasks;
+  tasks?: softwareUpdateConfigurationTasks;
 }
 
 /**
  * Update specific properties of the software update configuration.
  */
-model UpdateConfiguration {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model updateConfiguration {
   /**
    * operating system of target machines
    */
@@ -1453,6 +1455,7 @@ model NonAzureQueryProperties {
 /**
  * Definition of schedule parameters.
  */
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
 model SUCScheduleProperties {
   /**
    * Gets or sets the start time of the schedule.
@@ -1470,7 +1473,8 @@ model SUCScheduleProperties {
    * Gets or sets the end time of the schedule.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  expiryTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  expiryTime?: utcDateTime | null;
 
   /**
    * Gets or sets the expiry time's offset in minutes.
@@ -1486,7 +1490,8 @@ model SUCScheduleProperties {
    * Gets or sets the next run time of the schedule.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  nextRun?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  nextRun?: utcDateTime | null;
 
   /**
    * Gets or sets the next run time's offset in minutes.
@@ -1570,22 +1575,24 @@ model AdvancedScheduleMonthlyOccurrence {
 /**
  * Task properties of the software update configuration.
  */
-model SoftwareUpdateConfigurationTasks {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationTasks {
   /**
    * Pre task properties.
    */
-  preTask?: TaskProperties;
+  preTask?: taskProperties;
 
   /**
    * Post task properties.
    */
-  postTask?: TaskProperties;
+  postTask?: taskProperties;
 }
 
 /**
  * Task properties of the software update configuration.
  */
-model TaskProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model taskProperties {
   /**
    * Gets or sets the parameters of the task.
    */
@@ -1601,18 +1608,20 @@ model TaskProperties {
 /**
  * result of listing all software update configuration
  */
-model SoftwareUpdateConfigurationListResult {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationListResult {
   /**
    * outer object returned when listing all software update configurations
    */
   @pageItems
-  value?: SoftwareUpdateConfigurationCollectionItem[];
+  value?: softwareUpdateConfigurationCollectionItem[];
 }
 
 /**
  * Software update configuration collection item properties.
  */
-model SoftwareUpdateConfigurationCollectionItem {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationCollectionItem {
   /**
    * Name of the software update configuration.
    */
@@ -1628,22 +1637,23 @@ model SoftwareUpdateConfigurationCollectionItem {
   /**
    * Software update configuration properties.
    */
-  properties: SoftwareUpdateConfigurationCollectionItemProperties;
+  properties: softwareUpdateConfigurationCollectionItemProperties;
 }
 
 /**
  * Software update configuration collection item properties.
  */
-model SoftwareUpdateConfigurationCollectionItemProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationCollectionItemProperties {
   /**
    * Update specific properties of the software update configuration.
    */
-  updateConfiguration?: UpdateConfiguration;
+  updateConfiguration?: updateConfiguration;
 
   /**
    * Pre and Post Tasks defined
    */
-  tasks?: SoftwareUpdateConfigurationTasks;
+  tasks?: softwareUpdateConfigurationTasks;
 
   /**
    * execution frequency of the schedule associated with the software update configuration
@@ -1680,7 +1690,8 @@ model SoftwareUpdateConfigurationCollectionItemProperties {
    * ext run time of the update.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  nextRun?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  nextRun?: utcDateTime | null;
 }
 
 /**
@@ -1754,13 +1765,6 @@ model DeletedAutomationAccountProperties {
  * A list of private link resources
  */
 model PrivateLinkResourceListResult is Azure.Core.Page<PrivateLinkResource>;
-// {
-//   /**
-//    * Array of private link resources
-//    */
-//   @pageItems
-//   value?: PrivateLinkResource[];
-// }
 
 /**
  * A private link resource
@@ -1959,7 +1963,8 @@ model DscNodeReport {
    * Gets or sets the end time of the node report.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  endTime?: utcDateTime | null;
 
   /**
    * Gets or sets the lastModifiedTime of the node report.
@@ -1971,7 +1976,8 @@ model DscNodeReport {
    * Gets or sets the start time of the node report.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  startTime?: utcDateTime | null;
 
   /**
    * Gets or sets the type of the node report.
@@ -2038,11 +2044,13 @@ model DscNodeReport {
   /**
    * Gets or sets the IPv4 address of the node that sent the report.
    */
+  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
   iPV4Addresses?: string[];
 
   /**
    * Gets or sets the IPv6 address of the node that sent the report.
    */
+  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
   iPV6Addresses?: string[];
 
   /**
@@ -2321,6 +2329,7 @@ model EncryptionPropertiesIdentity {
   /**
    * The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-unknown" "FIXME"
   userAssignedIdentity?: unknown;
 }
 
@@ -2544,13 +2553,7 @@ model AutomationAccountCreateOrUpdateProperties {
 /**
  * The response model for the list statistics operation.
  */
-model StatisticsListResult {
-  /**
-   * Gets or sets a list of statistics.
-   */
-  @pageItems
-  value?: Statistics[];
-}
+model StatisticsListResult is Azure.Core.Page<Statistics>;
 
 /**
  * Definition of the statistic.
@@ -2578,9 +2581,10 @@ model Statistics {
   /**
    * Gets the endTime of the statistic.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  endTime?: utcDateTime | null;
 
   /**
    * Gets the id.
@@ -2592,13 +2596,7 @@ model Statistics {
 /**
  * The response model for the get usage operation.
  */
-model UsageListResult {
-  /**
-   * Gets or sets usage.
-   */
-  @pageItems
-  value?: Usage[];
-}
+model UsageListResult is Azure.Core.Page<Usage>;
 
 /**
  * Definition of Usage.
@@ -2666,18 +2664,21 @@ model Key {
   /**
    * Automation key name.
    */
+  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
   @visibility(Lifecycle.Read)
   KeyName?: AutomationKeyName;
 
   /**
    * Automation key permissions.
    */
+  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
   @visibility(Lifecycle.Read)
   Permissions?: AutomationKeyPermissions;
 
   /**
    * Value of the Automation Key used for registration.
    */
+  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
   @visibility(Lifecycle.Read)
   Value?: string;
 }
@@ -2734,7 +2735,8 @@ model DeletedRunbookProperties {
   /**
    * Environment of the runbook.
    */
-  runtimeEnvironment?: string;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  runtimeEnvironment?: string | null;
 
   /**
    * Gets or sets the creation time.
@@ -3414,6 +3416,7 @@ model HybridRunbookWorkerProperties {
 /**
  * The parameters supplied to the create hybrid runbook worker operation.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/patch-envelope" "FIXME"
 model HybridRunbookWorkerCreateParameters {
   /**
    * Gets or sets hybrid runbook worker group create or update properties.
@@ -3476,6 +3479,7 @@ model RunAsCredentialAssociationProperty {
 /**
  * The parameters supplied to the create hybrid runbook worker group operation.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/patch-envelope" "FIXME"
 model HybridRunbookWorkerGroupCreateOrUpdateParameters {
   /**
    * Gets or sets hybrid runbook worker group create or update properties.
@@ -3549,13 +3553,15 @@ model JobProperties {
    * Gets or sets the start time of the job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  startTime?: utcDateTime | null;
 
   /**
    * Gets or sets the end time of the job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  endTime?: utcDateTime | null;
 
   /**
    * Gets or sets the exception of the job.
@@ -3566,13 +3572,15 @@ model JobProperties {
    * Gets or sets the last modified time of the job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  lastModifiedTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  lastModifiedTime?: utcDateTime | null;
 
   /**
    * Gets or sets the last status modified time of the job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  lastStatusModifiedTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  lastStatusModifiedTime?: utcDateTime | null;
 
   /**
    * Gets or sets the parameters of the job.
@@ -3674,8 +3682,9 @@ model JobCollectionItemProperties {
   /**
    * Gets or sets the job started by.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
-  startedBy?: string;
+  startedBy?: string | null;
 
   /**
    * The creation time of the job.
@@ -3693,23 +3702,26 @@ model JobCollectionItemProperties {
   /**
    * The start time of the job.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  startTime?: utcDateTime | null;
 
   /**
    * The end time of the job.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  endTime?: utcDateTime | null;
 
   /**
    * The last modified time of the job.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  lastModifiedTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  lastModifiedTime?: utcDateTime | null;
 
   /**
    * The provisioning state of a resource.
@@ -3740,6 +3752,8 @@ model JobStream {
   /**
    * Gets or sets the id of the job stream.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME"
+  @Azure.ClientGenerator.Core.Legacy.flattenProperty
   properties?: JobStreamProperties;
 }
 
@@ -3771,7 +3785,8 @@ model JobStreamProperties {
   /**
    * Gets or sets the summary.
    */
-  summary?: string;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  summary?: string | null;
 
   /**
    * Gets or sets the values of the job stream.
@@ -4063,6 +4078,7 @@ model ModuleProperties {
   /**
    * Gets or sets the provisioning state of the module.
    */
+  #suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-provisioning-state" "FIXME"
   provisioningState?: ModuleProvisioningState;
 
   /**
@@ -4211,13 +4227,6 @@ model ModuleUpdateProperties {
  * The response model for the list fields operation.
  */
 model TypeFieldListResult is Azure.Core.Page<TypeField>;
-//   {/**
-//    * Gets or sets a list of fields.
-//    */
-//   @pageItems
-//   @identifiers(#[])
-//   value?: TypeField[];
-// }
 
 /**
  * Information about a field of a type.
@@ -4385,16 +4394,17 @@ model LogSpecification {
 /**
  * Graphical Runbook Content
  */
+#suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
 model GraphicalRunbookContent {
   /**
    * Raw graphical Runbook content.
    */
-  rawContent?: RawGraphicalRunbookContent;
+  rawContent?: RawGraphicalRunbookContent | null;
 
   /**
    * Graphical Runbook content as JSON
    */
-  graphRunbookJson?: string;
+  graphRunbookJson?: string | null;
 }
 
 /**
@@ -4452,10 +4462,7 @@ model PackageProperties {
    */
   error?: PackageErrorInfo;
 
-  /**
-   * Metadata pertaining to creation and last modification of the resource.
-   */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME"
   allOf?: SystemData;
 }
 
@@ -4502,6 +4509,7 @@ model PackageCreateOrUpdateProperties {
 /**
  * The parameters supplied to the update package operation.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/patch-envelope" "FIXME"
 model PackageUpdateParameters {
   /**
    * Gets or sets the package update properties.
@@ -4523,19 +4531,6 @@ model PackageUpdateProperties {
    */
   contentLink?: ContentLink;
 }
-
-/**
- * A list of private endpoint connections
- */
-model PrivateEndpointConnectionListResult
-  is Azure.Core.Page<PrivateEndpointConnection>;
-// {
-//   /**
-//    * Array of private endpoint connections
-//    */
-//   @pageItems
-//   value?: PrivateEndpointConnection[];
-// }
 
 /**
  * The parameters supplied to the create or update module operation.
@@ -4906,13 +4901,15 @@ model TestJob {
    * Gets or sets the start time of the test job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  startTime?: utcDateTime | null;
 
   /**
    * Gets or sets the end time of the test job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  endTime?: utcDateTime | null;
 
   /**
    * Gets or sets the exception of the test job.
@@ -4929,7 +4926,8 @@ model TestJob {
    * Gets or sets the last status modified time of the test job.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  lastStatusModifiedTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  lastStatusModifiedTime?: utcDateTime | null;
 
   /**
    * Gets or sets the parameters of the test job.
@@ -4946,16 +4944,14 @@ model TestJob {
 /**
  * The parameters supplied to the update automation account operation.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/patch-envelope" "FIXME"
 model RuntimeEnvironmentUpdateParameters {
   /**
    * Gets or sets Runtime update properties.
    */
   properties?: RuntimeEnvironmentUpdateProperties;
 
-  /**
-   * Metadata pertaining to creation and last modification of the resource.
-   */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME"
   systemData?: SystemData;
 }
 
@@ -5041,11 +5037,13 @@ model ScheduleCreateOrUpdateProperties {
    * Gets or sets the end time of the schedule.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  expiryTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  expiryTime?: utcDateTime | null;
 
   /**
    * Gets or sets the interval of the schedule.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-unknown" "FIXME"
   interval?: unknown;
 
   /**
@@ -5085,7 +5083,8 @@ model ScheduleProperties {
    * Gets or sets the end time of the schedule.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  expiryTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  expiryTime?: utcDateTime | null;
 
   /**
    * Gets or sets the expiry time's offset in minutes.
@@ -5101,7 +5100,8 @@ model ScheduleProperties {
    * Gets or sets the next run time of the schedule.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  nextRun?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  nextRun?: utcDateTime | null;
 
   /**
    * Gets or sets the next run time's offset in minutes.
@@ -5111,6 +5111,7 @@ model ScheduleProperties {
   /**
    * Gets or sets the interval of the schedule.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-unknown" "FIXME"
   interval?: unknown;
 
   /**
@@ -5179,7 +5180,8 @@ model ScheduleUpdateProperties {
 /**
  * Software update configuration machine run model.
  */
-model SoftwareUpdateConfigurationMachineRun {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationMachineRun {
   /**
    * Name of the software update configuration machine run
    */
@@ -5195,13 +5197,14 @@ model SoftwareUpdateConfigurationMachineRun {
   /**
    * Software update configuration machine run properties.
    */
-  properties?: UpdateConfigurationMachineRunProperties;
+  properties?: updateConfigurationMachineRunProperties;
 }
 
 /**
  * Software update configuration machine run properties.
  */
-model UpdateConfigurationMachineRunProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model updateConfigurationMachineRunProperties {
   /**
    * name of the updated computer
    */
@@ -5217,7 +5220,7 @@ model UpdateConfigurationMachineRunProperties {
   /**
    * software update configuration triggered this run
    */
-  softwareUpdateConfiguration?: UpdateConfigurationNavigation;
+  softwareUpdateConfiguration?: updateConfigurationNavigation;
 
   /**
    * Status of the software update configuration machine run.
@@ -5257,9 +5260,10 @@ model UpdateConfigurationMachineRunProperties {
   /**
    * End time of the software update configuration machine run.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  endTime?: utcDateTime | null;
 
   /**
    * configured duration for the software update configuration run.
@@ -5270,7 +5274,7 @@ model UpdateConfigurationMachineRunProperties {
   /**
    * Job associated with the software update configuration machine run
    */
-  job?: JobNavigation;
+  job?: jobNavigation;
 
   /**
    * Creation time of the resource, which only appears in the response.
@@ -5307,7 +5311,8 @@ model UpdateConfigurationMachineRunProperties {
 /**
  * Software update configuration Run Navigation model.
  */
-model UpdateConfigurationNavigation {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model updateConfigurationNavigation {
   /**
    * Name of the software update configuration triggered the software update configuration run
    */
@@ -5318,7 +5323,8 @@ model UpdateConfigurationNavigation {
 /**
  * Software update configuration machine run job navigation properties.
  */
-model JobNavigation {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model jobNavigation {
   /**
    * Id of the job associated with the software update configuration run
    */
@@ -5329,13 +5335,15 @@ model JobNavigation {
 /**
  * result of listing all software update configuration machine runs
  */
-model SoftwareUpdateConfigurationMachineRunListResult
-  is Azure.Core.Page<SoftwareUpdateConfigurationMachineRun>;
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationMachineRunListResult
+  is Azure.Core.Page<softwareUpdateConfigurationMachineRun>;
 
 /**
  * Software update configuration Run properties.
  */
-model SoftwareUpdateConfigurationRun {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationRun {
   /**
    * Name of the software update configuration run.
    */
@@ -5351,17 +5359,18 @@ model SoftwareUpdateConfigurationRun {
   /**
    * Software update configuration Run properties.
    */
-  properties?: SoftwareUpdateConfigurationRunProperties;
+  properties?: softwareUpdateConfigurationRunProperties;
 }
 
 /**
  * Software update configuration properties.
  */
-model SoftwareUpdateConfigurationRunProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationRunProperties {
   /**
    * software update configuration triggered this run
    */
-  softwareUpdateConfiguration?: UpdateConfigurationNavigation;
+  softwareUpdateConfiguration?: updateConfigurationNavigation;
 
   /**
    * Status of the software update configuration run.
@@ -5391,9 +5400,10 @@ model SoftwareUpdateConfigurationRunProperties {
   /**
    * End time of the software update configuration run.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  endTime?: utcDateTime | null;
 
   /**
    * Number of computers in the software update configuration run.
@@ -5436,28 +5446,30 @@ model SoftwareUpdateConfigurationRunProperties {
   /**
    * Software update configuration tasks triggered in this run
    */
-  tasks?: SoftwareUpdateConfigurationRunTasks;
+  tasks?: softwareUpdateConfigurationRunTasks;
 }
 
 /**
  * Software update configuration run tasks model.
  */
-model SoftwareUpdateConfigurationRunTasks {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationRunTasks {
   /**
    * Pre task properties.
    */
-  preTask?: SoftwareUpdateConfigurationRunTaskProperties;
+  preTask?: softwareUpdateConfigurationRunTaskProperties;
 
   /**
    * Post task properties.
    */
-  postTask?: SoftwareUpdateConfigurationRunTaskProperties;
+  postTask?: softwareUpdateConfigurationRunTaskProperties;
 }
 
 /**
  * Task properties of the software update configuration.
  */
-model SoftwareUpdateConfigurationRunTaskProperties {
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationRunTaskProperties {
   /**
    * The status of the task.
    */
@@ -5477,8 +5489,9 @@ model SoftwareUpdateConfigurationRunTaskProperties {
 /**
  * result of listing all software update configuration runs
  */
-model SoftwareUpdateConfigurationRunListResult
-  is Azure.Core.Page<SoftwareUpdateConfigurationRun>;
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
+model softwareUpdateConfigurationRunListResult
+  is Azure.Core.Page<softwareUpdateConfigurationRun>;
 
 /**
  * The parameters supplied to the create or update source control operation.
@@ -5730,16 +5743,18 @@ model SourceControlSyncJobProperties {
   /**
    * The start time of the job.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  startTime?: utcDateTime | null;
 
   /**
    * The end time of the job.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  endTime?: utcDateTime | null;
 
   /**
    * The sync type.
@@ -5786,16 +5801,18 @@ model SourceControlSyncJobByIdProperties {
   /**
    * The start time of the job.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  startTime?: utcDateTime;
+  startTime?: utcDateTime | null;
 
   /**
    * The end time of the job.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  endTime?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  endTime?: utcDateTime | null;
 
   /**
    * The sync type.
@@ -5847,9 +5864,10 @@ model SourceControlSyncJobStreamProperties {
   /**
    * The time of the sync job stream.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   @visibility(Lifecycle.Read)
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  time?: utcDateTime;
+  time?: utcDateTime | null;
 
   /**
    * The type of the sync job stream.
@@ -5890,9 +5908,10 @@ model SourceControlSyncJobStreamByIdProperties {
   /**
    * The time of the sync job stream.
    */
-  @visibility(Lifecycle.Read)
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  time?: utcDateTime;
+  @visibility(Lifecycle.Read)
+  time?: utcDateTime | null;
 
   /**
    * The type of the sync job stream.
@@ -5959,7 +5978,8 @@ model VariableProperties {
   /**
    * Gets or sets the encrypted flag of the variable.
    */
-  isEncrypted?: boolean;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  isEncrypted?: boolean | null;
 
   /**
    * Gets or sets the creation time.
@@ -6067,6 +6087,7 @@ model WatcherProperties {
   description?: string;
 }
 
+#suppress "@azure-tools/typespec-azure-resource-manager/patch-envelope" "FIXME"
 #suppress "@azure-tools/typespec-azure-core/documentation-required" "For backward compatibility"
 model WatcherUpdateParameters {
   /**
@@ -6115,7 +6136,8 @@ model WebhookProperties {
    * Gets or sets the last invoked time.
    */
   // FIXME: (utcDateTime) Please double check that this is the correct type for your scenario.
-  lastInvokedTime?: utcDateTime;
+  #suppress "@azure-tools/typespec-azure-core/no-nullable" "FIXME"
+  lastInvokedTime?: utcDateTime | null;
 
   /**
    * Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with.
@@ -6252,6 +6274,10 @@ model WebhookUpdateProperties {
 /**
  * The parameters supplied to the create or update configuration operation.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/arm-custom-resource-usage-discourage" "FIXME"
+#suppress "@azure-tools/typespec-azure-resource-manager/arm-custom-resource-no-key" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/no-private-usage" "FIXME"
 @Azure.ResourceManager.Legacy.customAzureResource(#{ isAzureResource: true })
 @Http.Private.includeInapplicableMetadataInPayload(false)
 model DscConfigurationCreateOrUpdateParameters {
@@ -6379,7 +6405,9 @@ model RunbookCreateOrUpdateDraftParameters {
   runbookContent: string;
 }
 
-#suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME"
+/**
+ * The response model for the list of Automation operations
+ */
 model OperationListResult is Azure.Core.Page<Operation>;
 
 /**
@@ -6420,6 +6448,7 @@ model ErrorAdditionalInfo {
   type: string;
 
   /** The additional info. */
+  #suppress "@azure-tools/typespec-azure-resource-manager/no-empty-model" "FIXME"
   @visibility(Lifecycle.Read)
   info: {};
 }

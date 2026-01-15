@@ -31,16 +31,19 @@ interface Credentials {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Credential_Get")
-  get is ArmResourceRead<Credential>;
+  @externalDocs("http://aka.ms/azureautomationsdk/credentialoperations")
+  get is ArmResourceRead<Credential, Error = ErrorResponse>;
 
   /**
    * Create a credential.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Credential_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/credentialoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Credential,
-    Request = CredentialCreateOrUpdateParameters
+    Request = CredentialCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -49,9 +52,11 @@ interface Credentials {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Credential_Update")
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/credentialoperations")
   update is ArmCustomPatchSync<
     Credential,
-    PatchModel = CredentialUpdateParameters
+    PatchModel = CredentialUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -60,14 +65,20 @@ interface Credentials {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Credential_Delete")
-  delete is ArmResourceDeleteSync<Credential, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/credentialoperations")
+  delete is ArmResourceDeleteSync<
+    Credential,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of credentials.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Credential_ListByAutomationAccount")
-  listByAutomationAccount is ArmResourceListByParent<Credential>;
+  @externalDocs("http://aka.ms/azureautomationsdk/credentialoperations")
+  listByAutomationAccount is ArmResourceListByParent<Credential, Error = never>;
 }
 
 @@doc(Credential.name, "The name of credential.");

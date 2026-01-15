@@ -32,7 +32,8 @@ interface JobSchedules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("JobSchedule_Get")
-  get is ArmResourceRead<JobSchedule>;
+  @externalDocs("http://aka.ms/azureautomationsdk/jobscheduleoperations")
+  get is ArmResourceRead<JobSchedule, Error = ErrorResponse>;
 
   /**
    * Create a job schedule.
@@ -40,10 +41,12 @@ interface JobSchedules {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "For backward compatibility"
   @operationId("JobSchedule_Create")
+  @externalDocs("http://aka.ms/azureautomationsdk/jobscheduleoperations")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     JobSchedule,
     Request = JobScheduleCreateParameters,
-    Response = ArmResourceCreatedSyncResponse<JobSchedule>
+    Response = ArmResourceCreatedSyncResponse<JobSchedule>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -52,13 +55,19 @@ interface JobSchedules {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("JobSchedule_Delete")
-  delete is ArmResourceDeleteSync<JobSchedule, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/jobscheduleoperations")
+  delete is ArmResourceDeleteSync<
+    JobSchedule,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of job schedules.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("JobSchedule_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/jobscheduleoperations")
   listByAutomationAccount is ArmResourceListByParent<
     JobSchedule,
     Parameters = {
@@ -67,7 +76,8 @@ interface JobSchedules {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 }
 

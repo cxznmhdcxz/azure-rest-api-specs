@@ -49,7 +49,8 @@ alias ModuleOps = Azure.ResourceManager.Legacy.LegacyOperations<
     @segment("modules")
     @key
     moduleName: string;
-  }
+  },
+  ErrorType = ErrorResponse
 >;
 
 @armResourceOperations
@@ -59,6 +60,7 @@ interface Modules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Module_Get")
+  @externalDocs("http://aka.ms/azureautomationsdk/moduleoperations")
   get is ModuleOps.Read<Module>;
 
   /**
@@ -66,6 +68,7 @@ interface Modules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Module_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/moduleoperations")
   createOrUpdate is ModuleOps.CreateOrUpdateSync<
     Module,
     Request = ModuleCreateOrUpdateParameters
@@ -77,6 +80,7 @@ interface Modules {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Module_Update")
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/moduleoperations")
   update is ModuleOps.CustomPatchSync<
     Module,
     PatchModel = ModuleUpdateParameters
@@ -88,6 +92,7 @@ interface Modules {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Module_Delete")
+  @externalDocs("http://aka.ms/azureautomationsdk/moduleoperations")
   delete is ModuleOps.DeleteSync<Module, Response = ArmDeletedResponse>;
 
   /**
@@ -95,6 +100,7 @@ interface Modules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Module_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/moduleoperations")
   listByAutomationAccount is ModuleOps.List<Module>;
 
   /**
@@ -102,17 +108,16 @@ interface Modules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Activity_Get")
-  @get
-  @action("{activityName}")
-  activityGet is ModuleOps.ActionSync<
+  @externalDocs("http://aka.ms/azureautomationsdk/activityoperations")
+  activityGet is ModuleOps.Read<
     Module,
-    void,
-    ArmResponse<Activity>,
+    Response = ArmResponse<Activity>,
     Parameters = {
       /**
        * The name of activity.
        */
       @path
+      @segment("activities")
       activityName: string;
     }
   >;
@@ -125,32 +130,35 @@ interface Modules {
   @list
   @get
   @action("activities")
+  @externalDocs("http://aka.ms/azureautomationsdk/activityoperations")
   listByModule is ModuleOps.ActionSync<
     Module,
     void,
     ArmResponse<ActivityListResult>
   >;
 
-  // /**
-  //  * Retrieve a list of fields of a given type identified by module name.
-  //  */
-  // #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
-  // @operationId("ObjectDataTypes_ListFieldsByModuleAndType")
-  // @list
-  // @get
-  // @action("fields")
-  // listFieldsByModuleAndType is ModuleOps.ActionSync<
-  //   Module,
-  //   void,
-  //   ArmResponse<TypeFieldListResult>,
-  //   Parameters = {
-  //     /**
-  //      * The name of type.
-  //      */
-  //     @path
-  //     typeName: string;
-  //   }
-  // >;
+  /**
+   * Retrieve a list of fields of a given type identified by module name.
+   */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
+  @operationId("ObjectDataTypes_ListFieldsByModuleAndType")
+  @list
+  @get
+  @action("fields")
+  @externalDocs("http://aka.ms/azureautomationsdk/objectdatatypeoperations")
+  listFieldsByModuleAndType is ModuleOps.ActionSync<
+    Module,
+    void,
+    ArmResponse<TypeFieldListResult>,
+    Parameters = {
+      /**
+       * The name of type.
+       */
+      @path
+      @segment("objectDataTypes")
+      typeName: string;
+    }
+  >;
 
   /**
    * Retrieve a list of fields of a given type identified by module name.
@@ -160,6 +168,7 @@ interface Modules {
   @list
   @get
   @action("fields")
+  @externalDocs("http://aka.ms/azureautomationsdk/typefieldoperations")
   listByType is ModuleOps.ActionSync<
     Module,
     void,
@@ -169,6 +178,7 @@ interface Modules {
        * The name of type.
        */
       @path
+      @segment("types")
       typeName: string;
     }
   >;

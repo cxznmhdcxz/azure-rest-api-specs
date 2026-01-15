@@ -31,16 +31,19 @@ interface Connections {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Connection_Get")
-  get is ArmResourceRead<Connection>;
+  @externalDocs("http://aka.ms/azureautomationsdk/connectionoperations")
+  get is ArmResourceRead<Connection, Error = ErrorResponse>;
 
   /**
    * Create or update a connection.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Connection_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/connectionoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Connection,
-    Request = ConnectionCreateOrUpdateParameters
+    Request = ConnectionCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -49,9 +52,11 @@ interface Connections {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Connection_Update")
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/connectionoperations")
   update is ArmCustomPatchSync<
     Connection,
-    PatchModel = ConnectionUpdateParameters
+    PatchModel = ConnectionUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -59,14 +64,19 @@ interface Connections {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Connection_Delete")
-  delete is ArmResourceDeleteSync<Connection>;
+  @externalDocs("http://aka.ms/azureautomationsdk/connectionoperations")
+  delete is ArmResourceDeleteSync<Connection, Error = ErrorResponse>;
 
   /**
    * Retrieve a list of connections.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Connection_ListByAutomationAccount")
-  listByAutomationAccount is ArmResourceListByParent<Connection>;
+  @externalDocs("http://aka.ms/azureautomationsdk/connectionoperations")
+  listByAutomationAccount is ArmResourceListByParent<
+    Connection,
+    Error = ErrorResponse
+  >;
 }
 
 @@doc(Connection.name, "The name of connection.");

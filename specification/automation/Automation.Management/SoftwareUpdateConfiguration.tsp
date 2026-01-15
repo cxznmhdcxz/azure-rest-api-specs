@@ -14,14 +14,16 @@ namespace Microsoft.Automation;
 /**
  * Software update configuration properties.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/resource-name" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME"
 @parentResource(AutomationAccount)
-model SoftwareUpdateConfiguration
+model softwareUpdateConfiguration
   is Azure.ResourceManager.ProxyResource<
-    SoftwareUpdateConfigurationProperties,
+    softwareUpdateConfigurationProperties,
     false
   > {
   ...ResourceNameParameter<
-    Resource = SoftwareUpdateConfiguration,
+    Resource = softwareUpdateConfiguration,
     KeyName = "softwareUpdateConfigurationName",
     SegmentName = "softwareUpdateConfigurations",
     NamePattern = ""
@@ -33,50 +35,59 @@ interface SoftwareUpdateConfigurations {
   /**
    * Get a single software update configuration by name.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   getByName is ArmResourceRead<
-    SoftwareUpdateConfiguration,
+    softwareUpdateConfiguration,
     Parameters = {
       /**
        * Identifies this specific client request.
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
    * Create a new software update configuration with the name given in the URI.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   create is ArmResourceCreateOrReplaceSync<
-    SoftwareUpdateConfiguration,
+    softwareUpdateConfiguration,
     Parameters = {
       /**
        * Identifies this specific client request.
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
    * delete a specific software update configuration.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   delete is ArmResourceDeleteSync<
-    SoftwareUpdateConfiguration,
+    softwareUpdateConfiguration,
     Parameters = {
       /**
        * Identifies this specific client request.
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 }
 
-@@doc(SoftwareUpdateConfiguration.name,
+@@doc(softwareUpdateConfiguration.name,
   "The name of the software update configuration to be created."
 );
-@@doc(SoftwareUpdateConfiguration.properties,
+@@doc(softwareUpdateConfiguration.properties,
   "Software update configuration properties."
 );
 @@doc(SoftwareUpdateConfigurations.create::parameters.resource,

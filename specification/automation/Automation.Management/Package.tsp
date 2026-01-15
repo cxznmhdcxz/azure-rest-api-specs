@@ -31,16 +31,19 @@ interface Packages {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Package_Get")
-  get is ArmResourceRead<Package>;
+  @externalDocs("http://aka.ms/azureautomationsdk/packageoperations")
+  get is ArmResourceRead<Package, Error = ErrorResponse>;
 
   /**
    * Create or update the package identified by package name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Package_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/packageoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Package,
-    Request = PackageCreateOrUpdateParameters
+    Request = PackageCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -49,21 +52,31 @@ interface Packages {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Package_Update")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Package, PatchModel = PackageUpdateParameters>;
+  @externalDocs("http://aka.ms/azureautomationsdk/packageoperations")
+  update is ArmCustomPatchSync<
+    Package,
+    PatchModel = PackageUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the package by name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Package_Delete")
-  delete is ArmResourceDeleteSync<Package>;
+  @externalDocs("http://aka.ms/azureautomationsdk/packageoperations")
+  delete is ArmResourceDeleteSync<Package, Error = ErrorResponse>;
 
   /**
    * Retrieve the a list of Packages
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Package_ListByRuntimeEnvironment")
-  listByRuntimeEnvironment is ArmResourceListByParent<Package>;
+  @externalDocs("http://aka.ms/azureautomationsdk/packageoperations")
+  listByRuntimeEnvironment is ArmResourceListByParent<
+    Package,
+    Error = ErrorResponse
+  >;
 }
 
 @@doc(Package.name, "The Package name.");

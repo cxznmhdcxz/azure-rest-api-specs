@@ -14,6 +14,7 @@ namespace Microsoft.Automation;
 /**
  * Definition of the watcher type.
  */
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME"
 @parentResource(AutomationAccount)
 model Watcher
   is Azure.ResourceManager.Legacy.TrackedResourceWithOptionalLocation<WatcherProperties> {
@@ -38,14 +39,19 @@ interface Watchers {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_Get")
-  get is ArmResourceRead<Watcher>;
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
+  get is ArmResourceRead<Watcher, Error = ErrorResponse>;
 
   /**
    * Create the watcher identified by watcher name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_CreateOrUpdate")
-  createOrUpdate is ArmResourceCreateOrReplaceSync<Watcher>;
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
+  createOrUpdate is ArmResourceCreateOrReplaceSync<
+    Watcher,
+    Error = ErrorResponse
+  >;
 
   /**
    * Update the watcher identified by watcher name.
@@ -53,7 +59,12 @@ interface Watchers {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_Update")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Watcher, PatchModel = WatcherUpdateParameters>;
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
+  update is ArmCustomPatchSync<
+    Watcher,
+    PatchModel = WatcherUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the watcher by name.
@@ -61,13 +72,19 @@ interface Watchers {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Watcher_Delete")
-  delete is ArmResourceDeleteSync<Watcher, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
+  delete is ArmResourceDeleteSync<
+    Watcher,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of watchers.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
   listByAutomationAccount is ArmResourceListByParent<
     Watcher,
     Parameters = {
@@ -76,7 +93,8 @@ interface Watchers {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -84,6 +102,7 @@ interface Watchers {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_Start")
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
   start is ArmResourceActionSync<
     Watcher,
     void,
@@ -96,6 +115,7 @@ interface Watchers {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Watcher_Stop")
+  @externalDocs("http://aka.ms/azureautomationsdk/watcheroperations")
   stop is ArmResourceActionSync<
     Watcher,
     void,
@@ -112,3 +132,4 @@ interface Watchers {
 @@doc(Watchers.update::parameters.properties,
   "The update parameters for watcher."
 );
+@@visibility(Watcher.tags, Lifecycle.Create, Lifecycle.Update, Lifecycle.Read);

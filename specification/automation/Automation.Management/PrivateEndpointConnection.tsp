@@ -25,6 +25,12 @@ model PrivateEndpointConnection
   >;
 }
 
+/**
+ * A list of private endpoint connections
+ */
+model PrivateEndpointConnectionListResult
+  is Azure.Core.Page<PrivateEndpointConnection>;
+
 @armResourceOperations
 interface PrivateEndpointConnections {
   /**
@@ -67,3 +73,6 @@ interface PrivateEndpointConnections {
 );
 @@doc(PrivateEndpointConnection.properties, "Resource properties.");
 @@doc(PrivateEndpointConnections.createOrUpdate::parameters.resource, "");
+@@doc(PrivateEndpointConnectionListResult.value,
+  "Array of private endpoint connections"
+);

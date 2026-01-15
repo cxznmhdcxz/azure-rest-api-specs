@@ -13,14 +13,32 @@ namespace Microsoft.Automation;
 /**
  * Definition of the automation account type.
  */
+#suppress "@azure-tools/typespec-azure-resource-manager/arm-custom-resource-usage-discourage" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/composition-over-inheritance" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME"
+#suppress "@azure-tools/typespec-azure-core/no-private-usage" "FIXME"
+@Azure.ResourceManager.Legacy.customAzureResource(#{ isAzureResource: true })
+@Http.Private.includeInapplicableMetadataInPayload(false)
 model AutomationAccount
-  is Azure.ResourceManager.TrackedResource<AutomationAccountProperties> {
-  ...ResourceNameParameter<
-    Resource = AutomationAccount,
-    KeyName = "automationAccountName",
-    SegmentName = "automationAccounts",
-    NamePattern = ""
-  >;
+  extends Azure.ResourceManager.Foundations.TrackedResource {
+  // is Azure.ResourceManager.TrackedResource<AutomationAccountProperties> {
+  // ...ResourceNameParameter<
+  //   Resource = AutomationAccount,
+  //   KeyName = "automationAccountName",
+  //   SegmentName = "automationAccounts",
+  //   NamePattern = ""
+  // >;
+
+  @path
+  @key("automationAccountName")
+  @visibility(Lifecycle.Read)
+  @segment("automationAccounts")
+  name: string;
+
+  /**
+   * Gets or sets the automation account properties.
+   */
+  properties?: AutomationAccountProperties;
 
   /**
    * Gets or sets the etag of the resource.
@@ -94,6 +112,7 @@ interface AutomationAccounts {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("AutomationAccount_List")
+  @summary("Lists the Automation Accounts within an Azure subscription.")
   list is ArmListBySubscription<AutomationAccount, Error = ErrorResponse>;
 
   /**
@@ -124,10 +143,11 @@ interface AutomationAccounts {
   @list
   @get
   @action("softwareUpdateConfigurations")
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   softwareUpdateConfigurationsList is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<SoftwareUpdateConfigurationListResult>,
+    ArmResponse<softwareUpdateConfigurationListResult>,
     Parameters = {
       /**
        * Identifies this specific client request.
@@ -140,7 +160,8 @@ interface AutomationAccounts {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -165,7 +186,7 @@ interface AutomationAccounts {
   @operationId("AgentRegistrationInformation_Get")
   @get
   @action("agentRegistrationInformation")
-  @externalDocs("http://aka.ms/azureautomationsdk/automationaccountoperations")
+  @externalDocs("http://aka.ms/azureautomationsdk/agentregistrationoperations")
   agentRegistrationInformationGet is ArmResourceActionSync<
     AutomationAccount,
     void,
@@ -196,7 +217,8 @@ interface AutomationAccounts {
   listDeletedRunbooks is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<DeletedRunbookListResult>
+    ArmResponse<DeletedRunbookListResult>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -207,6 +229,7 @@ interface AutomationAccounts {
   @list
   @get
   @action("statistics")
+  @externalDocs("http://aka.ms/azureautomationsdk/statisticsoperations")
   listByAutomationAccount is ArmResourceActionSync<
     AutomationAccount,
     void,
@@ -217,7 +240,8 @@ interface AutomationAccounts {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -228,10 +252,12 @@ interface AutomationAccounts {
   @list
   @get
   @action("usages")
+  @externalDocs("http://aka.ms/azureautomationsdk/usageoperations")
   usagesListByAutomationAccount is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<UsageListResult>
+    ArmResponse<UsageListResult>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -243,7 +269,8 @@ interface AutomationAccounts {
   keysListByAutomationAccount is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<KeyListResult>
+    ArmResponse<KeyListResult>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -254,6 +281,7 @@ interface AutomationAccounts {
   @list
   @get
   @action("jobs")
+  @externalDocs("http://aka.ms/azureautomationsdk/joboperations")
   jobListByAutomationAccount is ArmResourceActionSync<
     AutomationAccount,
     void,
@@ -270,7 +298,8 @@ interface AutomationAccounts {
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -280,10 +309,12 @@ interface AutomationAccounts {
   @operationId("LinkedWorkspace_Get")
   @get
   @action("linkedWorkspace")
+  @externalDocs("http://aka.ms/azureautomationsdk/linkedworkspaceoperations")
   linkedWorkspaceGet is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<LinkedWorkspace>
+    ArmResponse<LinkedWorkspace>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -318,7 +349,8 @@ interface AutomationAccounts {
   convertGraphRunbookContent is ArmResourceActionSync<
     AutomationAccount,
     GraphicalRunbookContent,
-    ArmResponse<GraphicalRunbookContent>
+    ArmResponse<GraphicalRunbookContent>,
+    Error = ErrorResponse
   >;
 
   /**
@@ -327,11 +359,10 @@ interface AutomationAccounts {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("SoftwareUpdateConfigurationMachineRuns_GetById")
   @get
-  @action("{softwareUpdateConfigurationMachineRunId}")
-  getById is ArmResourceActionSync<
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
+  getById is ArmResourceRead<
     AutomationAccount,
-    void,
-    ArmResponse<SoftwareUpdateConfigurationMachineRun>,
+    Response = ArmResponse<softwareUpdateConfigurationMachineRun>,
     Parameters = {
       /**
        * The Id of the software update configuration machine run.
@@ -339,6 +370,8 @@ interface AutomationAccounts {
       #suppress "@azure-tools/typespec-azure-core/no-format"
       @format("uuid")
       @path
+      @segment("softwareUpdateConfigurationMachineRuns")
+      @key("softwareUpdateConfigurationMachineRunId")
       softwareUpdateConfigurationMachineRunId: string;
 
       /**
@@ -346,7 +379,8 @@ interface AutomationAccounts {
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -357,10 +391,11 @@ interface AutomationAccounts {
   @list
   @get
   @action("softwareUpdateConfigurationMachineRuns")
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   softwareUpdateConfigurationMachineRunsList is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<SoftwareUpdateConfigurationMachineRunListResult>,
+    ArmResponse<softwareUpdateConfigurationMachineRunListResult>,
     Parameters = {
       /**
        * Identifies this specific client request.
@@ -385,7 +420,8 @@ interface AutomationAccounts {
        */
       @query("$top")
       $top?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -393,12 +429,10 @@ interface AutomationAccounts {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("SoftwareUpdateConfigurationRuns_GetById")
-  @get
-  @action("{softwareUpdateConfigurationRunId}")
-  softwareUpdateConfigurationRunsGetById is ArmResourceActionSync<
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationrunoperations")
+  softwareUpdateConfigurationRunsGetById is ArmResourceRead<
     AutomationAccount,
-    void,
-    ArmResponse<SoftwareUpdateConfigurationRun>,
+    Response = ArmResponse<softwareUpdateConfigurationRun>,
     Parameters = {
       /**
        * The Id of the software update configuration run.
@@ -406,6 +440,8 @@ interface AutomationAccounts {
       #suppress "@azure-tools/typespec-azure-core/no-format"
       @format("uuid")
       @path
+      @segment("softwareUpdateConfigurationRuns")
+      @key("softwareUpdateConfigurationRunId")
       softwareUpdateConfigurationRunId: string;
 
       /**
@@ -413,7 +449,8 @@ interface AutomationAccounts {
        */
       @header
       clientRequestId?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -424,10 +461,11 @@ interface AutomationAccounts {
   @list
   @get
   @action("softwareUpdateConfigurationRuns")
+  @externalDocs("http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations")
   softwareUpdateConfigurationRunsList is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<SoftwareUpdateConfigurationRunListResult>,
+    ArmResponse<softwareUpdateConfigurationRunListResult>,
     Parameters = {
       /**
        * Identifies this specific client request.
@@ -452,7 +490,8 @@ interface AutomationAccounts {
        */
       @query("$top")
       $top?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 
   /**
@@ -460,10 +499,13 @@ interface AutomationAccounts {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Webhook_GenerateUri")
+  @action("webhooks/generateUri")
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
   generateUri is ArmResourceActionSync<
     AutomationAccount,
     void,
-    ArmResponse<string>
+    ArmResponse<string>,
+    Error = ErrorResponse
   >;
 }
 

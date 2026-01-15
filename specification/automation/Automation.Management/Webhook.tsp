@@ -31,16 +31,19 @@ interface Webhooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Webhook_Get")
-  get is ArmResourceRead<Webhook>;
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
+  get is ArmResourceRead<Webhook, Error = ErrorResponse>;
 
   /**
    * Create the webhook identified by webhook name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Webhook_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Webhook,
-    Request = WebhookCreateOrUpdateParameters
+    Request = WebhookCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -48,8 +51,13 @@ interface Webhooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Webhook_Update")
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Webhook, PatchModel = WebhookUpdateParameters>;
+  update is ArmCustomPatchSync<
+    Webhook,
+    PatchModel = WebhookUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the webhook by name.
@@ -57,13 +65,19 @@ interface Webhooks {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Webhook_Delete")
-  delete is ArmResourceDeleteSync<Webhook, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
+  delete is ArmResourceDeleteSync<
+    Webhook,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of webhooks.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Webhook_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/webhookoperations")
   listByAutomationAccount is ArmResourceListByParent<
     Webhook,
     Parameters = {
@@ -72,7 +86,8 @@ interface Webhooks {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Error = ErrorResponse
   >;
 }
 

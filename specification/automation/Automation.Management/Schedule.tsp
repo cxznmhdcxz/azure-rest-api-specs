@@ -31,16 +31,20 @@ interface Schedules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Schedule_Get")
-  get is ArmResourceRead<Schedule>;
+  @externalDocs("http://aka.ms/azureautomationsdk/scheduleoperations")
+  get is ArmResourceRead<Schedule, Error = ErrorResponse>;
 
   /**
    * Create a schedule.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Schedule_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/scheduleoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Schedule,
-    Request = ScheduleCreateOrUpdateParameters
+    Request = ScheduleCreateOrUpdateParameters,
+    Response = ArmResourceUpdatedResponse<Schedule> | ArmResourceCreatedSyncResponse<Schedule> | ConflictResponse,
+    Error = ErrorResponse
   >;
 
   /**
@@ -48,8 +52,13 @@ interface Schedules {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Schedule_Update")
+  @externalDocs("http://aka.ms/azureautomationsdk/scheduleoperations")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Schedule, PatchModel = ScheduleUpdateParameters>;
+  update is ArmCustomPatchSync<
+    Schedule,
+    PatchModel = ScheduleUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the schedule identified by schedule name.
@@ -57,14 +66,23 @@ interface Schedules {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("Schedule_Delete")
-  delete is ArmResourceDeleteSync<Schedule, Response = ArmDeletedResponse>;
+  @externalDocs("http://aka.ms/azureautomationsdk/scheduleoperations")
+  delete is ArmResourceDeleteSync<
+    Schedule,
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a list of schedules.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Schedule_ListByAutomationAccount")
-  listByAutomationAccount is ArmResourceListByParent<Schedule>;
+  @externalDocs("http://aka.ms/azureautomationsdk/scheduleoperations")
+  listByAutomationAccount is ArmResourceListByParent<
+    Schedule,
+    Error = ErrorResponse
+  >;
 }
 
 @@doc(Schedule.name, "The schedule name.");

@@ -25,6 +25,16 @@ model DscNodeConfiguration
   >;
 }
 
+/**
+ * The response model for the list job operation.
+ */
+model DscNodeConfigurationListResult is Azure.Core.Page<DscNodeConfiguration> {
+  /**
+   * Gets or sets the total rows in query.
+   */
+  totalCount?: int32;
+}
+
 @armResourceOperations
 interface DscNodeConfigurations {
   /**
@@ -32,21 +42,25 @@ interface DscNodeConfigurations {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("DscNodeConfiguration_Get")
-  get is ArmResourceRead<DscNodeConfiguration>;
+  @externalDocs("http://aka.ms/azureautomationsdk/dscnodeconfigurations")
+  get is ArmResourceRead<DscNodeConfiguration, Error = ErrorResponse>;
 
   /**
    * Create the node configuration identified by node configuration name.
    */
+  #suppress "@azure-tools/typespec-azure-resource-manager/no-response-body" "FIXME"
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "For backward compatibility"
   @operationId("DscNodeConfiguration_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/dscnodeconfigurations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
     DscNodeConfiguration,
     Request = DscNodeConfigurationCreateOrUpdateParameters,
     Response = OkResponse | ArmResourceCreatedResponse<
       DscNodeConfiguration,
       ArmLroLocationHeader & Azure.Core.Foundations.RetryAfterHeader
-    >
+    >,
+    Error = ErrorResponse
   >;
 
   /**
@@ -55,9 +69,11 @@ interface DscNodeConfigurations {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("DscNodeConfiguration_Delete")
+  @externalDocs("http://aka.ms/azureautomationsdk/dscnodeconfigurations")
   delete is ArmResourceDeleteSync<
     DscNodeConfiguration,
-    Response = ArmDeletedResponse
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
   >;
 
   /**
@@ -65,6 +81,7 @@ interface DscNodeConfigurations {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("DscNodeConfiguration_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/dscnodeconfigurations")
   listByAutomationAccount is ArmResourceListByParent<
     DscNodeConfiguration,
     Parameters = {
@@ -91,7 +108,9 @@ interface DscNodeConfigurations {
        */
       @query("$inlinecount")
       $inlinecount?: string;
-    }
+    },
+    Response = ArmResponse<DscNodeConfigurationListResult>,
+    Error = ErrorResponse
   >;
 }
 
@@ -102,3 +121,5 @@ interface DscNodeConfigurations {
 @@doc(DscNodeConfigurations.createOrUpdate::parameters.resource,
   "The create or update parameters for configuration."
 );
+@@doc(DscNodeConfigurationListResult.value, "Gets or sets a list of Dsc node configurations.");
+@@doc(DscNodeConfigurationListResult.nextLink, "Gets or sets the next link.");

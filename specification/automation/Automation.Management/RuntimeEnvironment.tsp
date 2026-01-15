@@ -30,31 +30,48 @@ interface RuntimeEnvironments {
   /**
    * Get information about the Runtime Environment
    */
-  get is ArmResourceRead<RuntimeEnvironment>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/runtimeEnvironmentOperations")
+  get is ArmResourceRead<RuntimeEnvironment, Error = ErrorResponse>;
 
   /**
    * Create or update Runtime Environment
    */
-  create is ArmResourceCreateOrReplaceSync<RuntimeEnvironment>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/runtimeEnvironmentOperations")
+  create is ArmResourceCreateOrReplaceSync<
+    RuntimeEnvironment,
+    Error = ErrorResponse
+  >;
 
   /**
    * Update an Runtime Environment.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/automationaccountoperations")
   update is ArmCustomPatchSync<
     RuntimeEnvironment,
-    PatchModel = RuntimeEnvironmentUpdateParameters
+    PatchModel = RuntimeEnvironmentUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
    * Delete the Runtime Environment.
    */
-  delete is ArmResourceDeleteSync<RuntimeEnvironment>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/runtimeEnvironmentOperations")
+  delete is ArmResourceDeleteSync<RuntimeEnvironment, Error = ErrorResponse>;
 
   /**
    * Retrieve a list of RuntimeEnvironments.
    */
-  listByAutomationAccount is ArmResourceListByParent<RuntimeEnvironment>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  listByAutomationAccount is ArmResourceListByParent<
+    RuntimeEnvironment,
+    Error = ErrorResponse
+  >;
 }
 
 @@doc(RuntimeEnvironment.name, "The name of the Runtime Environment.");

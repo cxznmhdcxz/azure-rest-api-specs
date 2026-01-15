@@ -4,7 +4,7 @@ using Azure.ClientGenerator.Core;
 using Microsoft.Automation;
 
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
-@@Legacy.flattenProperty(SoftwareUpdateConfigurationCollectionItem.properties);
+@@Legacy.flattenProperty(softwareUpdateConfigurationCollectionItem.properties);
 
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
 @@Legacy.flattenProperty(DeletedAutomationAccount.properties);
@@ -115,10 +115,10 @@ using Microsoft.Automation;
 @@Legacy.flattenProperty(ScheduleUpdateParameters.properties);
 
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
-@@Legacy.flattenProperty(SoftwareUpdateConfigurationMachineRun.properties);
+@@Legacy.flattenProperty(softwareUpdateConfigurationMachineRun.properties);
 
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
-@@Legacy.flattenProperty(SoftwareUpdateConfigurationRun.properties);
+@@Legacy.flattenProperty(softwareUpdateConfigurationRun.properties);
 
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
 @@Legacy.flattenProperty(SourceControlCreateOrUpdateParameters.properties);
@@ -166,7 +166,7 @@ using Microsoft.Automation;
   "parameters"
 );
 #suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "Property flatten for SDK backward compatibility."
-@@Legacy.flattenProperty(SoftwareUpdateConfiguration.properties);
+@@Legacy.flattenProperty(softwareUpdateConfiguration.properties);
 
 @@clientLocation(DscNodes.get, "DscNode");
 @@clientLocation(DscNodes.update, "DscNode");
@@ -448,7 +448,6 @@ using Microsoft.Automation;
 @@clientLocation(SourceControls.delete, "SourceControl");
 @@clientLocation(SourceControls.listByAutomationAccount, "SourceControl");
 @@clientLocation(SourceControls.create, "SourceControlSyncJob");
-@@clientName(SourceControls.create::parameters.body, "parameters");
 @@clientLocation(SourceControls.sourceControlSyncJobGet,
   "SourceControlSyncJob"
 );
@@ -506,3 +505,17 @@ using Microsoft.Automation;
   "parameters"
 );
 @@clientName(DscConfigurations.update::parameters.properties, "parameters");
+@@clientName(SourceControls.create::parameters.resource, "parameters");
+@@clientName(Key.KeyName, "KeyName");
+@@clientName(Key.Permissions, "Permissions");
+@@clientName(Key.Value, "Value");
+@@doc(OperationListResult.value,
+  "List of Automation operations supported by the Automation resource provider."
+);
+@@Azure.ResourceManager.identifiers(OperationListResult.value, #["name"]);
+@@doc(PrivateLinkResourceListResult.value, "Array of private link resources");
+@@doc(StatisticsListResult.value, "Gets or sets a list of statistics.");
+@@doc(TypeFieldListResult.value, "Gets or set s a list of fields.");
+@@doc(Operations.list,
+  "Lists all of the available Automation REST API operations."
+);

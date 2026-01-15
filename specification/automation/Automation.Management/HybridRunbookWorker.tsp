@@ -25,39 +25,53 @@ model HybridRunbookWorker
   >;
 }
 
+model HybridRunbookWorkersListResult is Azure.Core.Page<HybridRunbookWorker>;
+
 @armResourceOperations
 interface HybridRunbookWorkers {
   /**
    * Retrieve a hybrid runbook worker.
    */
-  get is ArmResourceRead<HybridRunbookWorker>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
+  get is ArmResourceRead<HybridRunbookWorker, Error = ErrorResponse>;
 
   /**
    * Create a hybrid runbook worker.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     HybridRunbookWorker,
-    Request = HybridRunbookWorkerCreateParameters
+    Request = HybridRunbookWorkerCreateParameters,
+    Error = ErrorResponse
   >;
 
   /**
    * Update a hybrid runbook worker.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
   patch is Azure.ResourceManager.Legacy.CustomPatchSync<
     HybridRunbookWorker,
     PatchModel = HybridRunbookWorkerCreateParameters,
-    OptionalRequestBody = true
+    OptionalRequestBody = true,
+    Error = ErrorResponse
   >;
 
   /**
    * Delete a hybrid runbook worker.
    */
-  delete is ArmResourceDeleteSync<HybridRunbookWorker>;
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
+  delete is ArmResourceDeleteSync<HybridRunbookWorker, Error = ErrorResponse>;
 
   /**
    * Retrieve a list of hybrid runbook workers.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
   listByHybridRunbookWorkerGroup is ArmResourceListByParent<
     HybridRunbookWorker,
     Parameters = {
@@ -66,16 +80,21 @@ interface HybridRunbookWorkers {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Response = ArmResponse<HybridRunbookWorkersListResult>,
+    Error = ErrorResponse
   >;
 
   /**
    * Move a hybrid worker to a different group.
    */
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME"
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkeroperations")
   move is ArmResourceActionSync<
     HybridRunbookWorker,
     HybridRunbookWorkerMoveParameters,
-    OkResponse
+    OkResponse,
+    Error = ErrorResponse
   >;
 }
 

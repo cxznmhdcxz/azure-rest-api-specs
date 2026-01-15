@@ -37,16 +37,19 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_Get")
-  get is ArmResourceRead<Runbook>;
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  get is ArmResourceRead<Runbook, Error = ErrorResponse>;
 
   /**
    * Create the runbook identified by runbook name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_CreateOrUpdate")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
   createOrUpdate is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     Runbook,
-    Request = RunbookCreateOrUpdateParameters
+    Request = RunbookCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -55,35 +58,50 @@ interface Runbooks {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_Update")
   @patch(#{ implicitOptionality: false })
-  update is ArmCustomPatchSync<Runbook, PatchModel = RunbookUpdateParameters>;
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  update is ArmCustomPatchSync<
+    Runbook,
+    PatchModel = RunbookUpdateParameters,
+    Error = ErrorResponse
+  >;
 
   /**
    * Delete the runbook by name.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_Delete")
-  delete is ArmResourceDeleteSync<Runbook>;
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  delete is ArmResourceDeleteSync<Runbook, Error = ErrorResponse>;
 
   /**
    * Retrieve a list of runbooks.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_ListByAutomationAccount")
-  listByAutomationAccount is ArmResourceListByParent<Runbook>;
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  listByAutomationAccount is ArmResourceListByParent<
+    Runbook,
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve the content of runbook draft identified by runbook name.
    */
+  #suppress "@azure-tools/typespec-azure-resource-manager/no-response-body" "FIXME"
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("RunbookDraft_GetContent")
   @get
-  @action("content")
+  @action("draft/content")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookdraftoperations")
   getContent is ArmResourceActionSync<
     Runbook,
     void,
     OkResponse & {
       @header
       contentType: "text/powershell";
+
+      @bodyRoot
+      type: bytes;
     },
     Error = ErrorResponse
   >;
@@ -91,16 +109,24 @@ interface Runbooks {
   /**
    * Replaces the runbook draft content.
    */
+  #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME"
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("RunbookDraft_ReplaceContent")
   @put
-  @action("content")
+  @action("draft/content")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookdraftoperations")
+  @Azure.Core.useFinalStateVia("azure-async-operation")
   replaceContent is ArmResourceActionAsync<
     Runbook,
     bytes,
-    OkResponse,
+    OkResponse & {
+      @bodyRoot
+      type: bytes;
+    },
     LroHeaders = ArmAsyncOperationHeader &
-      Azure.Core.Foundations.RetryAfterHeader
+      ArmLroLocationHeader &
+      Azure.Core.Foundations.RetryAfterHeader,
+    Error = ErrorResponse
   >;
 
   /**
@@ -110,6 +136,7 @@ interface Runbooks {
   @operationId("RunbookDraft_Get")
   @get
   @action("draft")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookdraftoperations")
   runbookDraftGet is ArmResourceActionSync<
     Runbook,
     void,
@@ -122,6 +149,8 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("RunbookDraft_UndoEdit")
+  @action("draft/undoEdit")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookdraftoperations")
   undoEdit is ArmResourceActionSync<
     Runbook,
     void,
@@ -134,45 +163,52 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("Runbook_Publish")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookdraftoperations")
   publish is ArmResourceActionAsyncBase<
     Runbook,
     void,
     ArmAcceptedLroResponse,
-    BaseParameters = Azure.ResourceManager.Foundations.DefaultBaseParameters<Runbook>
+    BaseParameters = Azure.ResourceManager.Foundations.DefaultBaseParameters<Runbook>,
+    Error = ErrorResponse
   >;
 
-  // /**
-  //  * Retrieve the content of runbook identified by runbook name.
-  //  */
-  // #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
-  // @operationId("Runbook_GetContent")
-  // @get
-  // @action("content")
-  // runbookGetContent is ArmResourceActionSync<
-  //   Runbook,
-  //   void,
-  //   OkResponse & {
-  //     @header
-  //     contentType: "text/powershell";
-  //   }
-  // >;
+  /**
+   * Retrieve the content of runbook identified by runbook name.
+   */
+  #suppress "@azure-tools/typespec-azure-resource-manager/no-response-body" "FIXME"
+  #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
+  @operationId("Runbook_GetContent")
+  @get
+  @action("content")
+  @externalDocs("http://aka.ms/azureautomationsdk/runbookoperations")
+  runbookGetContent is ArmResourceActionSync<
+    Runbook,
+    void,
+    OkResponse & {
+      @header
+      contentType: "text/powershell";
+
+      @bodyRoot
+      type: bytes;
+    },
+    Error = ErrorResponse
+  >;
 
   /**
    * Retrieve a test job stream of the test job identified by runbook name and stream id.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJobStreams_Get")
-  @get
-  @action("{jobStreamId}")
-  testJobStreamsGet is ArmResourceActionSync<
+  @externalDocs("http://aka.ms/azureautomationsdk/jobstreamoperations")
+  testJobStreamsGet is ArmResourceRead<
     Runbook,
-    void,
-    ArmResponse<JobStream>,
+    Response = ArmResponse<JobStream>,
     Parameters = {
       /**
        * The job stream id.
        */
       @path
+      @segment("draft/testJob/streams")
       jobStreamId: string;
     },
     Error = ErrorResponse
@@ -185,7 +221,8 @@ interface Runbooks {
   @operationId("TestJobStreams_ListByTestJob")
   @list
   @get
-  @action("streams")
+  @action("draft/testJob/streams")
+  @externalDocs("http://aka.ms/azureautomationsdk/jobstreamoperations")
   listByTestJob is ArmResourceActionSync<
     Runbook,
     void,
@@ -203,10 +240,12 @@ interface Runbooks {
   /**
    * Create a test job of the runbook.
    */
+  #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME"
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJob_Create")
   @put
-  @action("testJob")
+  @action("draft/testJob")
+  @externalDocs("http://aka.ms/azureautomationsdk/testjoboperations")
   create is ArmResourceActionSync<
     Runbook,
     TestJobCreateParameters,
@@ -220,7 +259,8 @@ interface Runbooks {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJob_Get")
   @get
-  @action("testJob")
+  @action("draft/testJob")
+  @externalDocs("http://aka.ms/azureautomationsdk/testjoboperations")
   testJobGet is ArmResourceActionSync<
     Runbook,
     void,
@@ -233,6 +273,8 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJob_Resume")
+  @action("draft/testJob/resume")
+  @externalDocs("http://aka.ms/azureautomationsdk/testjoboperations")
   resume is ArmResourceActionSync<
     Runbook,
     void,
@@ -245,6 +287,8 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJob_Stop")
+  @action("draft/testJob/stop")
+  @externalDocs("http://aka.ms/azureautomationsdk/testjoboperations")
   stop is ArmResourceActionSync<
     Runbook,
     void,
@@ -257,6 +301,8 @@ interface Runbooks {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("TestJob_Suspend")
+  @action("draft/testJob/suspend")
+  @externalDocs("http://aka.ms/azureautomationsdk/testjoboperations")
   suspend is ArmResourceActionSync<
     Runbook,
     void,

@@ -25,6 +25,9 @@ model HybridRunbookWorkerGroup
   >;
 }
 
+model HybridRunbookWorkerGroupsListResult
+  is Azure.Core.Page<HybridRunbookWorkerGroup>;
+
 @armResourceOperations
 interface HybridRunbookWorkerGroups {
   /**
@@ -32,16 +35,19 @@ interface HybridRunbookWorkerGroups {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("HybridRunbookWorkerGroup_Get")
-  get is ArmResourceRead<HybridRunbookWorkerGroup>;
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkergroupoperations")
+  get is ArmResourceRead<HybridRunbookWorkerGroup, Error = ErrorResponse>;
 
   /**
    * Create a hybrid runbook worker group.
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("HybridRunbookWorkerGroup_Create")
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkergroupoperations")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateSync<
     HybridRunbookWorkerGroup,
-    Request = HybridRunbookWorkerGroupCreateOrUpdateParameters
+    Request = HybridRunbookWorkerGroupCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -50,9 +56,11 @@ interface HybridRunbookWorkerGroups {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("HybridRunbookWorkerGroup_Update")
   @patch(#{ implicitOptionality: false })
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkergroupoperations")
   update is ArmCustomPatchSync<
     HybridRunbookWorkerGroup,
-    PatchModel = HybridRunbookWorkerGroupCreateOrUpdateParameters
+    PatchModel = HybridRunbookWorkerGroupCreateOrUpdateParameters,
+    Error = ErrorResponse
   >;
 
   /**
@@ -61,9 +69,11 @@ interface HybridRunbookWorkerGroups {
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "For backward compatibility"
   @operationId("HybridRunbookWorkerGroup_Delete")
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkergroupoperations")
   delete is ArmResourceDeleteSync<
     HybridRunbookWorkerGroup,
-    Response = ArmDeletedResponse
+    Response = ArmDeletedResponse,
+    Error = ErrorResponse
   >;
 
   /**
@@ -71,6 +81,7 @@ interface HybridRunbookWorkerGroups {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("HybridRunbookWorkerGroup_ListByAutomationAccount")
+  @externalDocs("http://aka.ms/azureautomationsdk/hybridrunbookworkergroupoperations")
   listByAutomationAccount is ArmResourceListByParent<
     HybridRunbookWorkerGroup,
     Parameters = {
@@ -79,7 +90,9 @@ interface HybridRunbookWorkerGroups {
        */
       @query("$filter")
       $filter?: string;
-    }
+    },
+    Response = ArmResponse<HybridRunbookWorkerGroupsListResult>,
+    Error = ErrorResponse
   >;
 }
 
