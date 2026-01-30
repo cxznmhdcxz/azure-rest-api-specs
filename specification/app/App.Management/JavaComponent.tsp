@@ -13,6 +13,7 @@ namespace Microsoft.App;
 /**
  * Java Component.
  */
+@parentResource(ManagedEnvironment)
 model JavaComponent
   is Azure.ResourceManager.ProxyResource<JavaComponentProperties> {
   ...ResourceNameParameter<

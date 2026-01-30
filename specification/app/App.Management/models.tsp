@@ -4399,17 +4399,6 @@ model Template {
 model DiagnosticsCollection is Azure.Core.Page<Diagnostics>;
 
 /**
- * Diagnostics data for a resource.
- */
-#suppress "@azure-tools/typespec-azure-core/composition-over-inheritance" "For backward compatibility"
-model Diagnostics extends Azure.ResourceManager.CommonTypes.ProxyResource {
-  /**
-   * Diagnostics resource specific properties
-   */
-  properties?: DiagnosticsProperties;
-}
-
-/**
  * Diagnostics resource specific properties
  */
 model DiagnosticsProperties {
@@ -8632,6 +8621,7 @@ model ErrorEntity {
 /**
  * The workflow filter.
  */
+@secret
 model WorkflowArtifacts {
   /**
    * Application settings of the workflow.
@@ -8764,4 +8754,15 @@ model SpringCloudConfigComponent extends JavaComponentProperties {
    * Type of the Java Component.
    */
   componentType: "SpringCloudConfig";
+}
+
+/**
+ * Available operations of the service
+ */
+model AvailableOperations is Azure.Core.Page<OperationDetail>;
+
+#suppress "@azure-tools/typespec-azure-core/documentation-required" ""
+@error
+model ContainerAppsNotFoundError {
+  ...NotFoundResponse;
 }

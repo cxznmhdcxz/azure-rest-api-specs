@@ -25,7 +25,7 @@ model SessionPool
 }
 
 @armResourceOperations
-interface SessionPools {
+interface ContainerAppsSessionPools {
   /**
    * Get the properties of a session pool.
    */
@@ -75,6 +75,7 @@ interface SessionPools {
    */
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "non-standard operations"
   @operationId("ContainerAppsSessionPools_ListBySubscription")
+  @summary("Get the session pools in a given subscription.")
   listBySubscription is ArmListBySubscription<
     SessionPool,
     Response = ArmResponse<SessionPoolCollection>
@@ -109,9 +110,9 @@ interface SessionPools {
 @@doc(SessionPool.properties,
   "Container App session pool resource specific properties"
 );
-@@doc(SessionPools.createOrUpdate::parameters.resource,
+@@doc(ContainerAppsSessionPools.createOrUpdate::parameters.resource,
   "Properties used to create a session pool"
 );
-@@doc(SessionPools.update::parameters.properties,
+@@doc(ContainerAppsSessionPools.update::parameters.properties,
   "Properties used to create a session pool"
 );
