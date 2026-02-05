@@ -39,49 +39,15 @@ using Microsoft.HDInsight;
 @@clientName(Clusters.updateGatewaySettings::parameters.body, "parameters");
 @@clientName(Clusters.updateIdentityCertificate::parameters.body, "parameters");
 @@clientName(Clusters.executeScriptActions::parameters.body, "parameters");
-@@clientLocation(Clusters.configurationsList, "Configurations");
-@@clientName(Clusters.configurationsList, "List");
-@@clientLocation(Clusters.configurationsUpdate, "Configurations");
-@@clientName(Clusters.configurationsUpdate, "Update");
-@@clientName(Clusters.configurationsUpdate::parameters.resource, "parameters");
-@@clientLocation(Clusters.configurationsGet, "Configurations");
-@@clientName(Clusters.configurationsGet, "Get");
-@@clientLocation(Clusters.enableMonitoring, "Extensions");
-@@clientName(Clusters.enableMonitoring::parameters.body, "parameters");
-@@clientLocation(Clusters.getMonitoringStatus, "Extensions");
-@@clientLocation(Clusters.disableMonitoring, "Extensions");
-@@clientLocation(Clusters.enableAzureMonitor, "Extensions");
-@@clientName(Clusters.enableAzureMonitor::parameters.body, "parameters");
-@@clientLocation(Clusters.getAzureMonitorStatus, "Extensions");
-@@clientLocation(Clusters.disableAzureMonitor, "Extensions");
-@@clientLocation(Clusters.enableAzureMonitorAgent, "Extensions");
-@@clientName(Clusters.enableAzureMonitorAgent::parameters.body, "parameters");
-@@clientLocation(Clusters.getAzureMonitorAgentStatus, "Extensions");
-@@clientLocation(Clusters.disableAzureMonitorAgent, "Extensions");
-@@clientLocation(Clusters.extensionsCreate, "Extensions");
-@@clientName(Clusters.extensionsCreate, "Create");
-@@clientLocation(Clusters.extensionsGet, "Extensions");
-@@clientName(Clusters.extensionsGet, "Get");
-@@clientLocation(Clusters.extensionsDelete, "Extensions");
-@@clientName(Clusters.extensionsDelete, "Delete");
-@@clientLocation(Clusters.extensionsGetAzureAsyncOperationStatus, "Extensions");
-@@clientName(Clusters.extensionsGetAzureAsyncOperationStatus,
-  "GetAzureAsyncOperationStatus"
-);
-@@clientLocation(Clusters.scriptActionsDelete, "ScriptActions");
-@@clientName(Clusters.scriptActionsDelete, "Delete");
-@@clientLocation(Clusters.listByCluster, "ScriptActions");
-@@clientLocation(Clusters.getExecutionDetail, "ScriptActions");
-@@clientLocation(Clusters.getExecutionAsyncOperationStatus, "ScriptActions");
-@@clientLocation(Clusters.scriptExecutionHistoryListByCluster,
-  "ScriptExecutionHistory"
-);
-@@clientName(Clusters.scriptExecutionHistoryListByCluster, "ListByCluster");
-@@clientLocation(Clusters.promote, "ScriptExecutionHistory");
-@@clientLocation(Clusters.listHosts, "VirtualMachines");
-@@clientLocation(Clusters.restartHosts, "VirtualMachines");
-@@clientName(Clusters.restartHosts::parameters.body, "hosts");
-@@clientLocation(Clusters.getAsyncOperationStatus, "VirtualMachines");
+
+@@clientName(Extensions.enableMonitoring::parameters.body, "parameters");
+@@clientName(Extensions.enableAzureMonitor::parameters.body, "parameters");
+@@clientName(Extensions.enableAzureMonitorAgent::parameters.body, "parameters");
+
+@@clientLocation(ScriptExecutionHistory.getExecutionDetail, "ScriptActions");
+
+@@clientLocation(Promote.promote, "ScriptExecutionHistory");
+@@clientName(VirtualMachines.restartHosts::parameters.body, "hosts");
 
 @@clientName(PrivateEndpointConnections.createOrUpdate::parameters.resource,
   "parameters"
@@ -111,5 +77,25 @@ using Microsoft.HDInsight;
 @@clientName(LocationsOperationGroup.validateClusterCreateRequest::parameters.body,
   "parameters"
 );
-@@clientName(Clusters.extensionsCreate::parameters.resource, "parameters");
+@@clientName(Extensions.create::parameters.resource, "parameters");
 @@visibility(ScriptActionExecutionHistoryList.value, Lifecycle.Read);
+@@clientName(Configurations.update::parameters.resource, "parameters");
+@@doc(Extensions.enableMonitoring::parameters.body,
+  "The Operations Management Suite (OMS) workspace parameters."
+);
+@@doc(Extensions.enableAzureMonitor::parameters.body,
+  "The Log Analytics workspace parameters."
+);
+@@doc(Extensions.enableAzureMonitorAgent::parameters.body,
+  "The Log Analytics workspace parameters."
+);
+@@doc(Extensions.create::parameters.resource,
+  "The cluster extensions create request."
+);
+
+@@doc(Configurations.update::parameters.resource,
+  "The cluster configurations."
+);
+@@doc(VirtualMachines.restartHosts::parameters.body,
+  "The list of hosts to restart"
+);

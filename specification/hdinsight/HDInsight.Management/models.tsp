@@ -1204,8 +1204,10 @@ model ClusterDefinition {
    */
   configurations?: ClusterDefinitionConfigurations;
 }
+/**
+ * The cluster configurations.
+ */
 #suppress "@azure-tools/typespec-azure-resource-manager/no-empty-model" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-#suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
 @secret
 model ClusterDefinitionConfigurations {}
 

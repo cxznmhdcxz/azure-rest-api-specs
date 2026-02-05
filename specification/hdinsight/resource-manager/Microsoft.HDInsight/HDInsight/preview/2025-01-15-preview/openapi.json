@@ -53,6 +53,27 @@
     },
     {
       "name": "PrivateLinkResources"
+    },
+    {
+      "name": "Regions"
+    },
+    {
+      "name": "Configurations"
+    },
+    {
+      "name": "Extensions"
+    },
+    {
+      "name": "ScriptActions"
+    },
+    {
+      "name": "ScriptExecutionHistory"
+    },
+    {
+      "name": "Promote"
+    },
+    {
+      "name": "VirtualMachines"
     }
   ],
   "paths": {
@@ -134,6 +155,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/azureasyncoperations/{operationId}": {
       "get": {
         "operationId": "Locations_GetAzureAsyncOperationStatus",
+        "tags": [
+          "Regions"
+        ],
         "description": "Get the async operation status.",
         "parameters": [
           {
@@ -177,6 +201,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/billingSpecs": {
       "get": {
         "operationId": "Locations_ListBillingSpecs",
+        "tags": [
+          "Regions"
+        ],
         "description": "Lists the billingSpecs for the specified subscription and location.",
         "parameters": [
           {
@@ -213,6 +240,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/capabilities": {
       "get": {
         "operationId": "Locations_GetCapabilities",
+        "tags": [
+          "Regions"
+        ],
         "description": "Gets the capabilities for the specified location.",
         "parameters": [
           {
@@ -249,6 +279,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability": {
       "post": {
         "operationId": "Locations_CheckNameAvailability",
+        "tags": [
+          "Regions"
+        ],
         "description": "Check the cluster name is available or not.",
         "parameters": [
           {
@@ -294,6 +327,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/usages": {
       "get": {
         "operationId": "Locations_ListUsages",
+        "tags": [
+          "Regions"
+        ],
         "description": "Lists the usages for the specified location.",
         "parameters": [
           {
@@ -330,6 +366,9 @@
     "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/validateCreateRequest": {
       "post": {
         "operationId": "Locations_ValidateClusterCreateRequest",
+        "tags": [
+          "Regions"
+        ],
         "description": "Validate the cluster create request spec is valid or not.",
         "parameters": [
           {
@@ -1062,7 +1101,7 @@
       "post": {
         "operationId": "Configurations_List",
         "tags": [
-          "Clusters"
+          "Configurations"
         ],
         "description": "Gets all configuration information for an HDI cluster.",
         "parameters": [
@@ -1108,7 +1147,7 @@
       "get": {
         "operationId": "Configurations_Get",
         "tags": [
-          "Clusters"
+          "Configurations"
         ],
         "description": "The configuration object for the specified cluster. This API is not recommended and might be removed in the future. Please consider using List configurations API instead.",
         "parameters": [
@@ -1159,7 +1198,7 @@
       "post": {
         "operationId": "Configurations_Update",
         "tags": [
-          "Clusters"
+          "Configurations"
         ],
         "description": "Configures the HTTP settings on the specified cluster. This API is deprecated, please use UpdateGatewaySettings in cluster endpoint instead.",
         "parameters": [
@@ -1189,7 +1228,7 @@
           {
             "name": "parameters",
             "in": "body",
-            "description": "Resource create parameters.",
+            "description": "The cluster configurations.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/ClusterConfiguration"
@@ -1317,7 +1356,7 @@
       "get": {
         "operationId": "ScriptActions_GetExecutionAsyncOperationStatus",
         "tags": [
-          "Clusters"
+          "ScriptActions"
         ],
         "description": "Gets the async operation status of execution operation.",
         "parameters": [
@@ -1370,7 +1409,7 @@
       "get": {
         "operationId": "Extensions_Get",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Gets the extension properties for the specified HDInsight cluster extension.",
         "parameters": [
@@ -1421,7 +1460,7 @@
       "put": {
         "operationId": "Extensions_Create",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Creates an HDInsight cluster extension.",
         "parameters": [
@@ -1496,7 +1535,7 @@
       "delete": {
         "operationId": "Extensions_Delete",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Deletes the specified extension for HDInsight cluster.",
         "parameters": [
@@ -1567,7 +1606,7 @@
       "get": {
         "operationId": "Extensions_GetAzureAsyncOperationStatus",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Gets the async operation status.",
         "parameters": [
@@ -1627,7 +1666,7 @@
       "get": {
         "operationId": "Extensions_GetAzureMonitorStatus",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Gets the status of Azure Monitor on the HDInsight cluster.",
         "parameters": [
@@ -1671,7 +1710,7 @@
       "put": {
         "operationId": "Extensions_EnableAzureMonitor",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Enables the Azure Monitor on the HDInsight cluster.",
         "parameters": [
@@ -1739,7 +1778,7 @@
       "delete": {
         "operationId": "Extensions_DisableAzureMonitor",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Disables the Azure Monitor on the HDInsight cluster.",
         "parameters": [
@@ -1803,7 +1842,7 @@
       "get": {
         "operationId": "Extensions_GetAzureMonitorAgentStatus",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Gets the status of Azure Monitor Agent on the HDInsight cluster.",
         "parameters": [
@@ -1847,7 +1886,7 @@
       "put": {
         "operationId": "Extensions_EnableAzureMonitorAgent",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Enables the Azure Monitor Agent on the HDInsight cluster.",
         "parameters": [
@@ -1915,7 +1954,7 @@
       "delete": {
         "operationId": "Extensions_DisableAzureMonitorAgent",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Disables the Azure Monitor Agent on the HDInsight cluster.",
         "parameters": [
@@ -1979,7 +2018,7 @@
       "get": {
         "operationId": "Extensions_GetMonitoringStatus",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Gets the status of Operations Management Suite (OMS) on the HDInsight cluster.",
         "parameters": [
@@ -2023,7 +2062,7 @@
       "put": {
         "operationId": "Extensions_EnableMonitoring",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Enables the Operations Management Suite (OMS) on the HDInsight cluster.",
         "parameters": [
@@ -2074,7 +2113,7 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         },
@@ -2091,7 +2130,7 @@
       "delete": {
         "operationId": "Extensions_DisableMonitoring",
         "tags": [
-          "Clusters"
+          "Extensions"
         ],
         "description": "Disables the Operations Management Suite (OMS) on the HDInsight cluster.",
         "parameters": [
@@ -2201,7 +2240,7 @@
       "post": {
         "operationId": "VirtualMachines_ListHosts",
         "tags": [
-          "Clusters"
+          "VirtualMachines"
         ],
         "description": "Lists the HDInsight clusters hosts",
         "parameters": [
@@ -2602,7 +2641,7 @@
       "post": {
         "operationId": "VirtualMachines_RestartHosts",
         "tags": [
-          "Clusters"
+          "VirtualMachines"
         ],
         "description": "Restarts the specified HDInsight cluster hosts.",
         "parameters": [
@@ -2675,7 +2714,7 @@
       "get": {
         "operationId": "VirtualMachines_GetAsyncOperationStatus",
         "tags": [
-          "Clusters"
+          "VirtualMachines"
         ],
         "description": "Gets the async operation status.",
         "parameters": [
@@ -2986,7 +3025,7 @@
       "get": {
         "operationId": "ScriptActions_ListByCluster",
         "tags": [
-          "Clusters"
+          "ScriptActions"
         ],
         "description": "Lists all the persisted script actions for the specified cluster.",
         "parameters": [
@@ -3035,7 +3074,7 @@
       "delete": {
         "operationId": "ScriptActions_Delete",
         "tags": [
-          "Clusters"
+          "ScriptActions"
         ],
         "description": "Deletes a specified persisted script action of the cluster.",
         "parameters": [
@@ -3088,7 +3127,7 @@
       "get": {
         "operationId": "ScriptExecutionHistory_ListByCluster",
         "tags": [
-          "Clusters"
+          "ScriptExecutionHistory"
         ],
         "description": "Lists all scripts' execution history for the specified cluster.",
         "parameters": [
@@ -3137,7 +3176,7 @@
       "get": {
         "operationId": "ScriptActions_GetExecutionDetail",
         "tags": [
-          "Clusters"
+          "ScriptExecutionHistory"
         ],
         "description": "Gets the script execution detail for the given script execution ID.",
         "parameters": [
@@ -3190,7 +3229,7 @@
       "post": {
         "operationId": "ScriptExecutionHistory_Promote",
         "tags": [
-          "Clusters"
+          "Promote"
         ],
         "description": "Promotes the specified ad-hoc script execution to a persisted script.",
         "parameters": [
@@ -4247,6 +4286,7 @@
     },
     "ClusterDefinitionConfigurations": {
       "type": "object",
+      "description": "The cluster configurations.",
       "x-ms-secret": true
     },
     "ClusterDiskEncryptionParameters": {
