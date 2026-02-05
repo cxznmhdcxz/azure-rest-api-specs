@@ -44,9 +44,6 @@ using Microsoft.HDInsight;
 @@clientName(Extensions.enableAzureMonitor::parameters.body, "parameters");
 @@clientName(Extensions.enableAzureMonitorAgent::parameters.body, "parameters");
 
-@@clientLocation(ScriptExecutionHistory.getExecutionDetail, "ScriptActions");
-
-@@clientLocation(Promote.promote, "ScriptExecutionHistory");
 @@clientName(VirtualMachines.restartHosts::parameters.body, "hosts");
 
 @@clientName(PrivateEndpointConnections.createOrUpdate::parameters.resource,

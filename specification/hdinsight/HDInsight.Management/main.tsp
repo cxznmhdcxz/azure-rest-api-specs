@@ -28,7 +28,6 @@ using TypeSpec.Versioning;
 /**
  * The HDInsight Management Client.
  */
-#suppress "@azure-tools/typespec-client-generator-core/client-location-duplicate" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
 #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
 @armProviderNamespace
 @service(#{ title: "HDInsightManagementClient" })

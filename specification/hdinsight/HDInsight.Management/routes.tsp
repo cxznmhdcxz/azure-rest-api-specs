@@ -354,11 +354,12 @@ interface Extensions {
   >;
 }
 
-@armResourceOperations
+@armResourceOperations(#{ omitTags: true })
 interface ScriptActions {
   /**
    * Deletes a specified persisted script action of the cluster.
    */
+  @tag("ScriptActions")
   delete is ArmResourceDeleteSync<
     Cluster,
     Parameters = {
@@ -379,6 +380,7 @@ interface ScriptActions {
   @list
   @get
   @action("scriptActions")
+  @tag("ScriptActions")
   listByCluster is ArmResourceActionSync<
     Cluster,
     void,
@@ -389,6 +391,7 @@ interface ScriptActions {
   /**
    * Gets the async operation status of execution operation.
    */
+  @tag("ScriptActions")
   getExecutionAsyncOperationStatus is ArmResourceRead<
     Cluster,
     Response = ArmResponse<AsyncOperationResult>,
@@ -403,13 +406,11 @@ interface ScriptActions {
     },
     Error = ErrorResponse
   >;
-}
 
-@armResourceOperations
-interface ScriptExecutionHistory {
   /**
    * Gets the script execution detail for the given script execution ID.
    */
+  @tag("ScriptExecutionHistory")
   getExecutionDetail is ArmResourceRead<
     Cluster,
     Response = ArmResponse<RuntimeScriptActionDetail>,
@@ -424,23 +425,24 @@ interface ScriptExecutionHistory {
     },
     Error = ErrorResponse
   >;
+}
 
+@armResourceOperations(#{ omitTags: true })
+interface ScriptExecutionHistory {
   /**
    * Lists all scripts' execution history for the specified cluster.
    */
   @list
   @get
   @action("scriptExecutionHistory")
+  @tag("ScriptExecutionHistory")
   listByCluster is ArmResourceActionSync<
     Cluster,
     void,
     ArmResponse<ScriptActionExecutionHistoryList>,
     Error = ErrorResponse
   >;
-}
 
-@armResourceOperations
-interface Promote {
   /**
    * Promotes the specified ad-hoc script execution to a persisted script.
    */
