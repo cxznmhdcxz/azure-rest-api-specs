@@ -32,18 +32,17 @@ model ProtectionContainerMapping
 }
 
 @armResourceOperations
+@tag("ReplicationProtectionContainerMappings")
 interface ProtectionContainerMappings {
   /**
    * Gets the details of a protection container mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets a protection container mapping.")
   get is ArmResourceRead<ProtectionContainerMapping, Error = never>;
 
   /**
    * The operation to create a protection container mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Create protection container mapping.")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
@@ -57,7 +56,6 @@ interface ProtectionContainerMappings {
   /**
    * The operation to update protection container mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @patch(#{ implicitOptionality: false })
   @summary("Update protection container mapping.")
   update is ArmCustomPatchAsync<
@@ -69,7 +67,6 @@ interface ProtectionContainerMappings {
   /**
    * The operation to purge(force delete) a protection container mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Purge protection container mapping.")
   purge is ArmResourceDeleteWithoutOkAsync<
@@ -80,7 +77,6 @@ interface ProtectionContainerMappings {
   /**
    * Lists the protection container mappings for a protection container.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of protection container mappings for a protection container.")
   listByReplicationProtectionContainers is ArmResourceListByParent<
     ProtectionContainerMapping,
@@ -91,7 +87,6 @@ interface ProtectionContainerMappings {
   /**
    * The operation to delete or remove a protection container mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @action("remove")
   @summary("Remove protection container mapping.")

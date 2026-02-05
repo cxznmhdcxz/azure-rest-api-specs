@@ -189,7 +189,9 @@ union ProtectionHealth {
   Critical: "Critical",
 }
 
-#suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+/**
+ * The allowed operations on the migration item based on the current migration state of the item.
+ */
 union MigrationItemOperation {
   string,
 
@@ -405,7 +407,9 @@ union RecoveryPlanGroupType {
   Failover: "Failover",
 }
 
-#suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+/**
+ * The list of failover types.
+ */
 union ReplicationProtectedItemOperation {
   string,
 
@@ -480,7 +484,9 @@ union ReplicationProtectedItemOperation {
   CompleteMigration: "CompleteMigration",
 }
 
-#suppress "@azure-tools/typespec-azure-core/documentation-required" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+/**
+ * The failover direction.
+ */
 union PossibleOperationsDirections {
   string,
 

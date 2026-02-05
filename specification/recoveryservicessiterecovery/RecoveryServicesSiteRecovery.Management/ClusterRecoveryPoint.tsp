@@ -86,14 +86,17 @@ alias ClusterRecoveryPointOps = Azure.ResourceManager.Legacy.LegacyOperations<
 >;
 
 @armResourceOperations
-interface ClusterRecoveryPoints {
+@tag("ClusterRecoveryPoint")
+interface ClusterRecoveryPointsOperationGroup {
   /**
    * Get the details of specified recovery point.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets a recovery point.")
   get is ClusterRecoveryPointOps.Read<ClusterRecoveryPoint>;
+}
 
+@armResourceOperations
+interface ClusterRecoveryPoints {
   /**
    * The list of cluster recovery points.
    */

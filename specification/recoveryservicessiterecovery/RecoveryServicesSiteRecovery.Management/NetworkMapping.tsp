@@ -32,18 +32,17 @@ model NetworkMapping
 }
 
 @armResourceOperations
+@tag("ReplicationNetworkMappings")
 interface NetworkMappings {
   /**
    * Gets the details of an ASR network mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets network mapping by name.")
   get is ArmResourceRead<NetworkMapping, Error = never>;
 
   /**
    * The operation to create an ASR network mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Creates network mapping.")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
@@ -57,7 +56,6 @@ interface NetworkMappings {
   /**
    * The operation to update an ASR network mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @patch(#{ implicitOptionality: false })
   @summary("Updates network mapping.")
   update is ArmCustomPatchAsync<
@@ -69,7 +67,6 @@ interface NetworkMappings {
   /**
    * The operation to delete a network mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Delete network mapping.")
   delete is ArmResourceDeleteWithoutOkAsync<NetworkMapping, Error = never>;
@@ -77,7 +74,6 @@ interface NetworkMappings {
   /**
    * Lists all ASR network mappings for the specified network.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets all the network mappings under a network.")
   listByReplicationNetworks is ArmResourceListByParent<
     NetworkMapping,

@@ -163,9 +163,6 @@ using Microsoft.RecoveryServices;
 @@clientName(ReplicationProtectedItems.reinstallMobilityService::parameters.body,
   "updateMobilityServiceRequest"
 );
-@@clientLocation(ReplicationProtectedItems.listByReplicationProtectedItems,
-  "TargetComputeSizes"
-);
 
 @@clientName(ReplicationProtectionClusters.create::parameters.resource,
   "replicationProtectionCluster"
@@ -189,7 +186,9 @@ using Microsoft.RecoveryServices;
   ReplicationProtectionClusters
 );
 
-@@clientLocation(ClusterRecoveryPoints.get, "ClusterRecoveryPoint");
+@@clientLocation(ClusterRecoveryPointsOperationGroup.get,
+  "ClusterRecoveryPoint"
+);
 
 @@clientLocation(ProtectionContainerMappings.get,
   "ReplicationProtectionContainerMappings"

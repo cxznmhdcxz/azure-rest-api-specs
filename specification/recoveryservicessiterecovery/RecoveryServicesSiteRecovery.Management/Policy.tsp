@@ -30,18 +30,17 @@ model Policy is Azure.ResourceManager.ProxyResource<PolicyProperties> {
 }
 
 @armResourceOperations
+@tag("ReplicationPolicies")
 interface Policies {
   /**
    * Gets the details of a replication policy.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the requested policy.")
   get is ArmResourceRead<Policy, Error = never>;
 
   /**
    * The operation to create a replication policy.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Creates the policy.")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
@@ -55,7 +54,6 @@ interface Policies {
   /**
    * The operation to update a replication policy.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @patch(#{ implicitOptionality: false })
   @summary("Updates the policy.")
   update is ArmCustomPatchAsync<
@@ -67,7 +65,6 @@ interface Policies {
   /**
    * The operation to delete a replication policy.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Delete the policy.")
   delete is ArmResourceDeleteWithoutOkAsync<Policy, Error = never>;
@@ -75,7 +72,6 @@ interface Policies {
   /**
    * Lists the replication policies for a vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of replication policies.")
   list is ArmResourceListByParent<
     Policy,

@@ -31,18 +31,17 @@ model Network is Azure.ResourceManager.ProxyResource<NetworkProperties> {
 }
 
 @armResourceOperations
+@tag("ReplicationNetworks")
 interface Networks {
   /**
    * Gets the details of a network.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets a network with specified server id and network name.")
   get is ArmResourceRead<Network, Error = never>;
 
   /**
    * Lists the networks available for a fabric.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of networks under a fabric.")
   listByReplicationFabrics is ArmResourceListByParent<
     Network,

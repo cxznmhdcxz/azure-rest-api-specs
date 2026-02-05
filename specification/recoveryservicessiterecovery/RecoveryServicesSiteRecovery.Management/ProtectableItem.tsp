@@ -32,18 +32,17 @@ model ProtectableItem
 }
 
 @armResourceOperations
+@tag("ReplicationProtectableItems")
 interface ProtectableItems {
   /**
    * The operation to get the details of a protectable item.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the details of a protectable item.")
   get is ArmResourceRead<ProtectableItem, Error = never>;
 
   /**
    * Lists the protectable items in a protection container.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of protectable items.")
   listByReplicationProtectionContainers is ArmResourceListByParent<
     ProtectableItem,

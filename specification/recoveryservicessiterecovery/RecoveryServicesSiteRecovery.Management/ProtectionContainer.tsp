@@ -68,18 +68,17 @@ model ProtectionContainerAcceptedLroResponse<FinalResult extends TypeSpec.Reflec
 
 #suppress "@azure-tools/typespec-azure-resource-manager/no-resource-delete-operation" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
 @armResourceOperations
+@tag("ReplicationProtectionContainers")
 interface ProtectionContainers {
   /**
    * Gets the details of a protection container.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the protection container details.")
   get is ArmResourceRead<ProtectionContainer, Error = never>;
 
   /**
    * Operation to create a protection container.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Create a protection container.")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
@@ -93,7 +92,6 @@ interface ProtectionContainers {
   /**
    * Lists the protection containers in the specified fabric.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of protection container for a fabric.")
   listByReplicationFabrics is ArmResourceListByParent<
     ProtectionContainer,
@@ -104,7 +102,6 @@ interface ProtectionContainers {
   /**
    * The operation to a add a protectable item to a protection container(Add physical server).
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Adds a protectable item to the replication protection container.")
   discoverProtectableItem is ArmResourceActionAsyncBase<
@@ -118,7 +115,6 @@ interface ProtectionContainers {
   /**
    * Operation to remove a protection container.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @action("remove")
   @summary("Removes a protection container.")
@@ -133,7 +129,6 @@ interface ProtectionContainers {
   /**
    * Operation to switch protection from one container to another.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Switches protection from one container to another.")
   switchClusterProtection is ReplicationProtectionContainersOps.ActionAsync<
     ProtectionContainer,
@@ -147,7 +142,6 @@ interface ProtectionContainers {
   /**
    * Operation to switch protection from one container to another or one replication provider to another.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-post-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @action("switchprotection")
   @summary("Switches protection from one container to another or one replication provider to another.")

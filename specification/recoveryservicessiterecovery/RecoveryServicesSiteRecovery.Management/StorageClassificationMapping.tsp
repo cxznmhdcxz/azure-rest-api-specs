@@ -32,18 +32,17 @@ model StorageClassificationMapping
 }
 
 @armResourceOperations
+@tag("ReplicationStorageClassificationMappings")
 interface StorageClassificationMappings {
   /**
    * Gets the details of the specified storage classification mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the details of a storage classification mapping.")
   get is ArmResourceRead<StorageClassificationMapping, Error = never>;
 
   /**
    * The operation to create a storage classification mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-put-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Create storage classification mapping.")
   create is Azure.ResourceManager.Legacy.CreateOrUpdateAsync<
@@ -57,7 +56,6 @@ interface StorageClassificationMappings {
   /**
    * The operation to delete a storage classification mapping.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-resource-manager/arm-delete-operation-response-codes" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Delete a storage classification mapping.")
   delete is ArmResourceDeleteWithoutOkAsync<
@@ -68,7 +66,6 @@ interface StorageClassificationMappings {
   /**
    * Lists the storage classification mappings for the fabric.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of storage classification mappings objects under a storage.")
   listByReplicationStorageClassifications is ArmResourceListByParent<
     StorageClassificationMapping,

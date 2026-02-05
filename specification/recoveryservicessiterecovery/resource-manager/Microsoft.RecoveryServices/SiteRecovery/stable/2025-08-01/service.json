@@ -40,40 +40,43 @@
   },
   "tags": [
     {
-      "name": "Alerts"
+      "name": "ReplicationAlertSettings"
     },
     {
-      "name": "ReplicationEligibilityResultsOperationGroup"
+      "name": "ReplicationEligibilityResults"
     },
     {
-      "name": "Events"
+      "name": "ReplicationEvents"
     },
     {
-      "name": "Fabrics"
+      "name": "ReplicationFabrics"
     },
     {
-      "name": "LogicalNetworks"
+      "name": "ReplicationLogicalNetworks"
     },
     {
-      "name": "Networks"
+      "name": "ReplicationNetworks"
     },
     {
-      "name": "NetworkMappings"
+      "name": "ReplicationNetworkMappings"
     },
     {
-      "name": "ProtectionContainers"
+      "name": "ReplicationProtectionContainers"
     },
     {
-      "name": "MigrationItems"
+      "name": "ReplicationMigrationItems"
     },
     {
       "name": "MigrationRecoveryPoints"
     },
     {
-      "name": "ProtectableItems"
+      "name": "ReplicationProtectableItems"
     },
     {
       "name": "ReplicationProtectedItems"
+    },
+    {
+      "name": "TargetComputeSizes"
     },
     {
       "name": "RecoveryPoints"
@@ -82,46 +85,61 @@
       "name": "ReplicationProtectionClusters"
     },
     {
-      "name": "ReplicationProtectionClusterOperationGroup"
+      "name": "ClusterRecoveryPoint"
     },
     {
       "name": "ClusterRecoveryPoints"
     },
     {
-      "name": "ProtectionContainerMappings"
+      "name": "ReplicationProtectionContainerMappings"
     },
     {
-      "name": "RecoveryServicesProviders"
+      "name": "ReplicationRecoveryServicesProviders"
     },
     {
-      "name": "StorageClassifications"
+      "name": "ReplicationStorageClassifications"
     },
     {
-      "name": "StorageClassificationMappings"
+      "name": "ReplicationStorageClassificationMappings"
     },
     {
-      "name": "VCenters"
+      "name": "ReplicationvCenters"
     },
     {
-      "name": "Jobs"
+      "name": "ReplicationJobs"
     },
     {
-      "name": "Policies"
+      "name": "ReplicationPolicies"
     },
     {
       "name": "ReplicationProtectionIntents"
     },
     {
-      "name": "RecoveryPlans"
+      "name": "ReplicationRecoveryPlans"
     },
     {
-      "name": "VaultSettings"
+      "name": "ReplicationVaultSetting"
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "ReplicationAppliances"
+    },
+    {
+      "name": "SupportedOperatingSystems"
+    },
+    {
+      "name": "ReplicationVaultHealth"
     }
   ],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations": {
       "get": {
         "operationId": "Operations_List",
+        "tags": [
+          "Operations"
+        ],
         "summary": "Returns the list of available operations.",
         "description": "Operation to return the list of available operations.",
         "parameters": [
@@ -157,7 +175,7 @@
       "get": {
         "operationId": "ReplicationAlertSettings_List",
         "tags": [
-          "Alerts"
+          "ReplicationAlertSettings"
         ],
         "summary": "Gets the list of configured email notification(alert) configurations.",
         "description": "Gets the list of email notification(alert) configurations for the vault.",
@@ -201,7 +219,7 @@
       "get": {
         "operationId": "ReplicationAlertSettings_Get",
         "tags": [
-          "Alerts"
+          "ReplicationAlertSettings"
         ],
         "summary": "Gets an email notification(alert) configuration.",
         "description": "Gets the details of the specified email notification(alert) configuration.",
@@ -247,7 +265,7 @@
       "put": {
         "operationId": "ReplicationAlertSettings_Create",
         "tags": [
-          "Alerts"
+          "ReplicationAlertSettings"
         ],
         "summary": "Configures email notifications for this vault.",
         "description": "Create or update an email notification(alert) configuration.",
@@ -303,6 +321,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances": {
       "get": {
         "operationId": "ReplicationAppliances_List",
+        "tags": [
+          "ReplicationAppliances"
+        ],
         "summary": "Gets the list of appliances.",
         "description": "Gets the list of Azure Site Recovery appliances for the vault.",
         "parameters": [
@@ -352,7 +373,7 @@
       "get": {
         "operationId": "ReplicationEvents_List",
         "tags": [
-          "Events"
+          "ReplicationEvents"
         ],
         "summary": "Gets the list of Azure Site Recovery events.",
         "description": "Gets the list of Azure Site Recovery events for the vault.",
@@ -403,7 +424,7 @@
       "get": {
         "operationId": "ReplicationEvents_Get",
         "tags": [
-          "Events"
+          "ReplicationEvents"
         ],
         "summary": "Get the details of an Azure Site recovery event.",
         "description": "The operation to get the details of an Azure Site recovery event.",
@@ -451,7 +472,7 @@
       "get": {
         "operationId": "ReplicationFabrics_List",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Gets the list of ASR fabrics.",
         "description": "Gets a list of the Azure Site Recovery fabrics in the vault.",
@@ -495,7 +516,7 @@
       "get": {
         "operationId": "ReplicationFabrics_Get",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Gets the details of an ASR fabric.",
         "description": "Gets the details of an Azure Site Recovery fabric.",
@@ -548,7 +569,7 @@
       "put": {
         "operationId": "ReplicationFabrics_Create",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Creates an Azure Site Recovery fabric.",
         "description": "The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).",
@@ -622,7 +643,7 @@
       "delete": {
         "operationId": "ReplicationFabrics_Purge",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Purges the site.",
         "description": "The operation to purge(force delete) an Azure Site Recovery fabric.",
@@ -685,7 +706,7 @@
       "post": {
         "operationId": "ReplicationFabrics_CheckConsistency",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Checks the consistency of the ASR fabric.",
         "description": "The operation to perform a consistency check on the fabric.",
@@ -752,7 +773,7 @@
       "post": {
         "operationId": "ReplicationFabrics_MigrateToAad",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Migrates the site to AAD.",
         "description": "The operation to migrate an Azure Site Recovery fabric to AAD.",
@@ -815,7 +836,7 @@
       "post": {
         "operationId": "ReplicationFabrics_ReassociateGateway",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Perform failover of the process server.",
         "description": "The operation to move replications from a process server to another process server.",
@@ -891,7 +912,7 @@
       "post": {
         "operationId": "ReplicationFabrics_Delete",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Deletes the site.",
         "description": "The operation to delete or remove an Azure Site Recovery fabric.",
@@ -954,7 +975,7 @@
       "post": {
         "operationId": "ReplicationFabrics_RemoveInfra",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Removes the appliance's infrastructure under the fabric.",
         "description": "Removes the appliance's infrastructure under the fabric.",
@@ -1022,7 +1043,7 @@
       "post": {
         "operationId": "ReplicationFabrics_RenewCertificate",
         "tags": [
-          "Fabrics"
+          "ReplicationFabrics"
         ],
         "summary": "Renews certificate for the fabric.",
         "description": "Renews the connection certificate for the ASR replication fabric.",
@@ -1098,7 +1119,7 @@
       "get": {
         "operationId": "ReplicationLogicalNetworks_ListByReplicationFabrics",
         "tags": [
-          "LogicalNetworks"
+          "ReplicationLogicalNetworks"
         ],
         "summary": "Gets the list of logical networks under a fabric.",
         "description": "Lists all the logical networks of the Azure Site Recovery fabric.",
@@ -1149,7 +1170,7 @@
       "get": {
         "operationId": "ReplicationLogicalNetworks_Get",
         "tags": [
-          "LogicalNetworks"
+          "ReplicationLogicalNetworks"
         ],
         "summary": "Gets a logical network with specified server id and logical network name.",
         "description": "Gets the details of a logical network.",
@@ -1204,7 +1225,7 @@
       "get": {
         "operationId": "ReplicationNetworks_ListByReplicationFabrics",
         "tags": [
-          "Networks"
+          "ReplicationNetworks"
         ],
         "summary": "Gets the list of networks under a fabric.",
         "description": "Lists the networks available for a fabric.",
@@ -1255,7 +1276,7 @@
       "get": {
         "operationId": "ReplicationNetworks_Get",
         "tags": [
-          "Networks"
+          "ReplicationNetworks"
         ],
         "summary": "Gets a network with specified server id and network name.",
         "description": "Gets the details of a network.",
@@ -1310,7 +1331,7 @@
       "get": {
         "operationId": "ReplicationNetworkMappings_ListByReplicationNetworks",
         "tags": [
-          "NetworkMappings"
+          "ReplicationNetworkMappings"
         ],
         "summary": "Gets all the network mappings under a network.",
         "description": "Lists all ASR network mappings for the specified network.",
@@ -1368,7 +1389,7 @@
       "get": {
         "operationId": "ReplicationNetworkMappings_Get",
         "tags": [
-          "NetworkMappings"
+          "ReplicationNetworkMappings"
         ],
         "summary": "Gets network mapping by name.",
         "description": "Gets the details of an ASR network mapping.",
@@ -1428,7 +1449,7 @@
       "put": {
         "operationId": "ReplicationNetworkMappings_Create",
         "tags": [
-          "NetworkMappings"
+          "ReplicationNetworkMappings"
         ],
         "summary": "Creates network mapping.",
         "description": "The operation to create an ASR network mapping.",
@@ -1516,7 +1537,7 @@
       "patch": {
         "operationId": "ReplicationNetworkMappings_Update",
         "tags": [
-          "NetworkMappings"
+          "ReplicationNetworkMappings"
         ],
         "summary": "Updates network mapping.",
         "description": "The operation to update an ASR network mapping.",
@@ -1604,7 +1625,7 @@
       "delete": {
         "operationId": "ReplicationNetworkMappings_Delete",
         "tags": [
-          "NetworkMappings"
+          "ReplicationNetworkMappings"
         ],
         "summary": "Delete network mapping.",
         "description": "The operation to delete a network mapping.",
@@ -1681,7 +1702,7 @@
       "get": {
         "operationId": "ReplicationProtectionContainers_ListByReplicationFabrics",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Gets the list of protection container for a fabric.",
         "description": "Lists the protection containers in the specified fabric.",
@@ -1732,7 +1753,7 @@
       "get": {
         "operationId": "ReplicationProtectionContainers_Get",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Gets the protection container details.",
         "description": "Gets the details of a protection container.",
@@ -1785,7 +1806,7 @@
       "put": {
         "operationId": "ReplicationProtectionContainers_Create",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Create a protection container.",
         "description": "Operation to create a protection container.",
@@ -1868,7 +1889,7 @@
       "post": {
         "operationId": "ReplicationProtectionContainers_DiscoverProtectableItem",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Adds a protectable item to the replication protection container.",
         "description": "The operation to a add a protectable item to a protection container(Add physical server).",
@@ -1951,7 +1972,7 @@
       "post": {
         "operationId": "ReplicationProtectionContainers_Delete",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Removes a protection container.",
         "description": "Operation to remove a protection container.",
@@ -2021,7 +2042,7 @@
       "get": {
         "operationId": "ReplicationMigrationItems_ListByReplicationProtectionContainers",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Gets the list of migration items in the protection container.",
         "description": "Gets the list of ASR migration items in the protection container.",
@@ -2100,7 +2121,7 @@
       "get": {
         "operationId": "ReplicationMigrationItems_Get",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Gets the details of a migration item.",
         "description": "Gets the details of a migration item.",
@@ -2160,7 +2181,7 @@
       "put": {
         "operationId": "ReplicationMigrationItems_Create",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Enables migration.",
         "description": "The operation to create an ASR migration item (enable migration).",
@@ -2248,7 +2269,7 @@
       "patch": {
         "operationId": "ReplicationMigrationItems_Update",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Updates migration item.",
         "description": "The operation to update the recovery settings of an ASR migration item.",
@@ -2336,7 +2357,7 @@
       "delete": {
         "operationId": "ReplicationMigrationItems_Delete",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Delete the migration item.",
         "description": "The operation to delete an ASR migration item.",
@@ -2420,7 +2441,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_Migrate",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Migrate item.",
         "description": "The operation to initiate migration of the item.",
@@ -2644,7 +2665,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_PauseReplication",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Pause replication.",
         "description": "The operation to initiate pause replication of the item.",
@@ -2734,7 +2755,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_ResumeReplication",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Resume replication.",
         "description": "The operation to initiate resume replication of the item.",
@@ -2824,7 +2845,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_Resync",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Resynchronizes replication.",
         "description": "The operation to resynchronize replication of an ASR migration item.",
@@ -2914,7 +2935,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_TestMigrate",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Test migrate item.",
         "description": "The operation to initiate test migration of the item.",
@@ -3004,7 +3025,7 @@
       "post": {
         "operationId": "ReplicationMigrationItems_TestMigrateCleanup",
         "tags": [
-          "MigrationItems"
+          "ReplicationMigrationItems"
         ],
         "summary": "Test migrate cleanup.",
         "description": "The operation to initiate test migrate cleanup.",
@@ -3094,7 +3115,7 @@
       "get": {
         "operationId": "ReplicationProtectableItems_ListByReplicationProtectionContainers",
         "tags": [
-          "ProtectableItems"
+          "ReplicationProtectableItems"
         ],
         "summary": "Gets the list of protectable items.",
         "description": "Lists the protectable items in a protection container.",
@@ -3173,7 +3194,7 @@
       "get": {
         "operationId": "ReplicationProtectableItems_Get",
         "tags": [
-          "ProtectableItems"
+          "ReplicationProtectableItems"
         ],
         "summary": "Gets the details of a protectable item.",
         "description": "The operation to get the details of a protectable item.",
@@ -4799,7 +4820,7 @@
       "get": {
         "operationId": "TargetComputeSizes_ListByReplicationProtectedItems",
         "tags": [
-          "ReplicationProtectedItems"
+          "TargetComputeSizes"
         ],
         "summary": "Gets the list of target compute sizes for the replication protected item.",
         "description": "Lists the available target compute sizes for a replication protected item.",
@@ -5314,7 +5335,7 @@
       "get": {
         "operationId": "ReplicationProtectionClusters_ListByReplicationProtectionContainers",
         "tags": [
-          "ReplicationProtectionClusterOperationGroup"
+          "ReplicationProtectionClusters"
         ],
         "summary": "Gets the list of Replication protection clusters in fabric, container.",
         "description": "Gets the list of ASR replication protected clusters in the protection container.",
@@ -5843,7 +5864,7 @@
       "get": {
         "operationId": "ReplicationProtectionClusters_GetOperationResults",
         "tags": [
-          "ReplicationProtectionClusterOperationGroup"
+          "ReplicationProtectionClusters"
         ],
         "summary": "Tracks the Replication protection cluster async operation.",
         "description": "Track the results of an asynchronous operation on the replication protection cluster.",
@@ -5998,7 +6019,7 @@
       "get": {
         "operationId": "ClusterRecoveryPoint_Get",
         "tags": [
-          "ClusterRecoveryPoints"
+          "ClusterRecoveryPoint"
         ],
         "summary": "Gets a recovery point.",
         "description": "Get the details of specified recovery point.",
@@ -6485,7 +6506,7 @@
       "get": {
         "operationId": "ReplicationProtectionContainerMappings_ListByReplicationProtectionContainers",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Gets the list of protection container mappings for a protection container.",
         "description": "Lists the protection container mappings for a protection container.",
@@ -6543,7 +6564,7 @@
       "get": {
         "operationId": "ReplicationProtectionContainerMappings_Get",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Gets a protection container mapping.",
         "description": "Gets the details of a protection container mapping.",
@@ -6603,7 +6624,7 @@
       "put": {
         "operationId": "ReplicationProtectionContainerMappings_Create",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Create protection container mapping.",
         "description": "The operation to create a protection container mapping.",
@@ -6691,7 +6712,7 @@
       "patch": {
         "operationId": "ReplicationProtectionContainerMappings_Update",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Update protection container mapping.",
         "description": "The operation to update protection container mapping.",
@@ -6779,7 +6800,7 @@
       "delete": {
         "operationId": "ReplicationProtectionContainerMappings_Purge",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Purge protection container mapping.",
         "description": "The operation to purge(force delete) a protection container mapping.",
@@ -6856,7 +6877,7 @@
       "post": {
         "operationId": "ReplicationProtectionContainerMappings_Delete",
         "tags": [
-          "ProtectionContainerMappings"
+          "ReplicationProtectionContainerMappings"
         ],
         "summary": "Remove protection container mapping.",
         "description": "The operation to delete or remove a protection container mapping.",
@@ -6942,7 +6963,7 @@
       "post": {
         "operationId": "ReplicationProtectionContainers_SwitchClusterProtection",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Switches protection from one container to another.",
         "description": "Operation to switch protection from one container to another.",
@@ -7038,7 +7059,7 @@
       "post": {
         "operationId": "ReplicationProtectionContainers_SwitchProtection",
         "tags": [
-          "ProtectionContainers"
+          "ReplicationProtectionContainers"
         ],
         "summary": "Switches protection from one container to another or one replication provider to another.",
         "description": "Operation to switch protection from one container to another or one replication provider to another.",
@@ -7125,7 +7146,7 @@
       "get": {
         "operationId": "ReplicationRecoveryServicesProviders_ListByReplicationFabrics",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Gets the list of registered recovery services providers for the fabric.",
         "description": "Lists the registered recovery services providers for the specified fabric.",
@@ -7176,7 +7197,7 @@
       "get": {
         "operationId": "ReplicationRecoveryServicesProviders_Get",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Gets the details of a recovery services provider.",
         "description": "Gets the details of registered recovery services provider.",
@@ -7229,7 +7250,7 @@
       "put": {
         "operationId": "ReplicationRecoveryServicesProviders_Create",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Adds a recovery services provider.",
         "description": "The operation to add a recovery services provider.",
@@ -7310,7 +7331,7 @@
       "delete": {
         "operationId": "ReplicationRecoveryServicesProviders_Purge",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Purges recovery service provider from fabric.",
         "description": "The operation to purge(force delete) a recovery services provider from the vault.",
@@ -7380,7 +7401,7 @@
       "post": {
         "operationId": "ReplicationRecoveryServicesProviders_RefreshProvider",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Refresh details from the recovery services provider.",
         "description": "The operation to refresh the information from the recovery services provider.",
@@ -7454,7 +7475,7 @@
       "post": {
         "operationId": "ReplicationRecoveryServicesProviders_Delete",
         "tags": [
-          "RecoveryServicesProviders"
+          "ReplicationRecoveryServicesProviders"
         ],
         "summary": "Deletes provider from fabric. Note: Deleting provider for any fabric other than SingleHost is unsupported. To maintain backward compatibility for released clients the object \"deleteRspInput\" is used (if the object is empty we assume that it is old client and continue the old behavior).",
         "description": "The operation to removes/delete(unregister) a recovery services provider from the vault.",
@@ -7524,7 +7545,7 @@
       "get": {
         "operationId": "ReplicationStorageClassifications_ListByReplicationFabrics",
         "tags": [
-          "StorageClassifications"
+          "ReplicationStorageClassifications"
         ],
         "summary": "Gets the list of storage classification objects under a fabric.",
         "description": "Lists the storage classifications available in the specified fabric.",
@@ -7575,7 +7596,7 @@
       "get": {
         "operationId": "ReplicationStorageClassifications_Get",
         "tags": [
-          "StorageClassifications"
+          "ReplicationStorageClassifications"
         ],
         "summary": "Gets the details of a storage classification.",
         "description": "Gets the details of the specified storage classification.",
@@ -7630,7 +7651,7 @@
       "get": {
         "operationId": "ReplicationStorageClassificationMappings_ListByReplicationStorageClassifications",
         "tags": [
-          "StorageClassificationMappings"
+          "ReplicationStorageClassificationMappings"
         ],
         "summary": "Gets the list of storage classification mappings objects under a storage.",
         "description": "Lists the storage classification mappings for the fabric.",
@@ -7688,7 +7709,7 @@
       "get": {
         "operationId": "ReplicationStorageClassificationMappings_Get",
         "tags": [
-          "StorageClassificationMappings"
+          "ReplicationStorageClassificationMappings"
         ],
         "summary": "Gets the details of a storage classification mapping.",
         "description": "Gets the details of the specified storage classification mapping.",
@@ -7748,7 +7769,7 @@
       "put": {
         "operationId": "ReplicationStorageClassificationMappings_Create",
         "tags": [
-          "StorageClassificationMappings"
+          "ReplicationStorageClassificationMappings"
         ],
         "summary": "Create storage classification mapping.",
         "description": "The operation to create a storage classification mapping.",
@@ -7836,7 +7857,7 @@
       "delete": {
         "operationId": "ReplicationStorageClassificationMappings_Delete",
         "tags": [
-          "StorageClassificationMappings"
+          "ReplicationStorageClassificationMappings"
         ],
         "summary": "Delete a storage classification mapping.",
         "description": "The operation to delete a storage classification mapping.",
@@ -7913,7 +7934,7 @@
       "get": {
         "operationId": "ReplicationvCenters_ListByReplicationFabrics",
         "tags": [
-          "VCenters"
+          "ReplicationvCenters"
         ],
         "summary": "Gets the list of vCenter registered under a fabric.",
         "description": "Lists the vCenter servers registered in a fabric.",
@@ -7964,7 +7985,7 @@
       "get": {
         "operationId": "ReplicationvCenters_Get",
         "tags": [
-          "VCenters"
+          "ReplicationvCenters"
         ],
         "summary": "Gets the details of a vCenter.",
         "description": "Gets the details of a registered vCenter server(Add vCenter server).",
@@ -8017,7 +8038,7 @@
       "put": {
         "operationId": "ReplicationvCenters_Create",
         "tags": [
-          "VCenters"
+          "ReplicationvCenters"
         ],
         "summary": "Add vCenter.",
         "description": "The operation to create a vCenter object..",
@@ -8098,7 +8119,7 @@
       "patch": {
         "operationId": "ReplicationvCenters_Update",
         "tags": [
-          "VCenters"
+          "ReplicationvCenters"
         ],
         "summary": "Update vCenter operation.",
         "description": "The operation to update a registered vCenter.",
@@ -8179,7 +8200,7 @@
       "delete": {
         "operationId": "ReplicationvCenters_Delete",
         "tags": [
-          "VCenters"
+          "ReplicationvCenters"
         ],
         "summary": "Remove vcenter operation.",
         "description": "The operation to remove(unregister) a registered vCenter server from the vault.",
@@ -8249,7 +8270,7 @@
       "get": {
         "operationId": "ReplicationJobs_List",
         "tags": [
-          "Jobs"
+          "ReplicationJobs"
         ],
         "summary": "Gets the list of jobs.",
         "description": "Gets the list of Azure Site Recovery Jobs for the vault.",
@@ -8300,7 +8321,7 @@
       "get": {
         "operationId": "ReplicationJobs_Get",
         "tags": [
-          "Jobs"
+          "ReplicationJobs"
         ],
         "summary": "Gets the job details.",
         "description": "Get the details of an Azure Site Recovery job.",
@@ -8348,7 +8369,7 @@
       "post": {
         "operationId": "ReplicationJobs_Cancel",
         "tags": [
-          "Jobs"
+          "ReplicationJobs"
         ],
         "summary": "Cancels the specified job.",
         "description": "The operation to cancel an Azure Site Recovery job.",
@@ -8415,7 +8436,7 @@
       "post": {
         "operationId": "ReplicationJobs_Restart",
         "tags": [
-          "Jobs"
+          "ReplicationJobs"
         ],
         "summary": "Restarts the specified job.",
         "description": "The operation to restart an Azure Site Recovery job.",
@@ -8482,7 +8503,7 @@
       "post": {
         "operationId": "ReplicationJobs_Resume",
         "tags": [
-          "Jobs"
+          "ReplicationJobs"
         ],
         "summary": "Resumes the specified job.",
         "description": "The operation to resume an Azure Site Recovery job.",
@@ -8557,6 +8578,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export": {
       "post": {
         "operationId": "ReplicationJobs_Export",
+        "tags": [
+          "ReplicationJobs"
+        ],
         "summary": "Exports the details of the Azure Site Recovery jobs of the vault.",
         "description": "The operation to export the details of the Azure Site Recovery jobs of the vault.",
         "parameters": [
@@ -8623,6 +8647,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems": {
       "get": {
         "operationId": "ReplicationMigrationItems_List",
+        "tags": [
+          "ReplicationMigrationItems"
+        ],
         "summary": "Gets the list of migration items in the vault.",
         "description": "Gets the list of migration items in the vault.",
         "parameters": [
@@ -8685,6 +8712,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings": {
       "get": {
         "operationId": "ReplicationNetworkMappings_List",
+        "tags": [
+          "ReplicationNetworkMappings"
+        ],
         "summary": "Gets all the network mappings under a vault.",
         "description": "Lists all ASR network mappings in the vault.",
         "parameters": [
@@ -8726,6 +8756,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks": {
       "get": {
         "operationId": "ReplicationNetworks_List",
+        "tags": [
+          "ReplicationNetworks"
+        ],
         "summary": "Gets the list of networks. View-only API.",
         "description": "Lists the networks available in a vault.",
         "parameters": [
@@ -8768,7 +8801,7 @@
       "get": {
         "operationId": "ReplicationPolicies_List",
         "tags": [
-          "Policies"
+          "ReplicationPolicies"
         ],
         "summary": "Gets the list of replication policies.",
         "description": "Lists the replication policies for a vault.",
@@ -8812,7 +8845,7 @@
       "get": {
         "operationId": "ReplicationPolicies_Get",
         "tags": [
-          "Policies"
+          "ReplicationPolicies"
         ],
         "summary": "Gets the requested policy.",
         "description": "Gets the details of a replication policy.",
@@ -8858,7 +8891,7 @@
       "put": {
         "operationId": "ReplicationPolicies_Create",
         "tags": [
-          "Policies"
+          "ReplicationPolicies"
         ],
         "summary": "Creates the policy.",
         "description": "The operation to create a replication policy.",
@@ -8932,7 +8965,7 @@
       "patch": {
         "operationId": "ReplicationPolicies_Update",
         "tags": [
-          "Policies"
+          "ReplicationPolicies"
         ],
         "summary": "Updates the policy.",
         "description": "The operation to update a replication policy.",
@@ -9006,7 +9039,7 @@
       "delete": {
         "operationId": "ReplicationPolicies_Delete",
         "tags": [
-          "Policies"
+          "ReplicationPolicies"
         ],
         "summary": "Delete the policy.",
         "description": "The operation to delete a replication policy.",
@@ -9068,6 +9101,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems": {
       "get": {
         "operationId": "ReplicationProtectedItems_List",
+        "tags": [
+          "ReplicationProtectedItems"
+        ],
         "summary": "Gets the list of replication protected items.",
         "description": "Gets the list of ASR replication protected items in the vault.",
         "parameters": [
@@ -9123,6 +9159,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionClusters": {
       "get": {
         "operationId": "ReplicationProtectionClusters_List",
+        "tags": [
+          "ReplicationProtectionClusters"
+        ],
         "summary": "Gets the list of Replication protection clusters in vault.",
         "description": "Gets the list of ASR replication protected clusters in the vault.",
         "parameters": [
@@ -9185,6 +9224,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainerMappings": {
       "get": {
         "operationId": "ReplicationProtectionContainerMappings_List",
+        "tags": [
+          "ReplicationProtectionContainerMappings"
+        ],
         "summary": "Gets the list of all protection container mappings in a vault.",
         "description": "Lists the protection container mappings in the vault.",
         "parameters": [
@@ -9226,6 +9268,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers": {
       "get": {
         "operationId": "ReplicationProtectionContainers_List",
+        "tags": [
+          "ReplicationProtectionContainers"
+        ],
         "summary": "Gets the list of all protection containers in a vault.",
         "description": "Lists the protection containers in a vault.",
         "parameters": [
@@ -9429,7 +9474,7 @@
       "get": {
         "operationId": "ReplicationRecoveryPlans_List",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Gets the list of recovery plans.",
         "description": "Lists the recovery plans in the vault.",
@@ -9473,7 +9518,7 @@
       "get": {
         "operationId": "ReplicationRecoveryPlans_Get",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Gets the requested recovery plan.",
         "description": "Gets the details of the recovery plan.",
@@ -9519,7 +9564,7 @@
       "put": {
         "operationId": "ReplicationRecoveryPlans_Create",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Creates a recovery plan with the given details.",
         "description": "The operation to create a recovery plan.",
@@ -9593,7 +9638,7 @@
       "patch": {
         "operationId": "ReplicationRecoveryPlans_Update",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Updates the given recovery plan.",
         "description": "The operation to update a recovery plan.",
@@ -9667,7 +9712,7 @@
       "delete": {
         "operationId": "ReplicationRecoveryPlans_Delete",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Deletes the specified recovery plan.",
         "description": "Delete a recovery plan.",
@@ -9730,7 +9775,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_FailoverCancel",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute cancel failover of the recovery plan.",
         "description": "The operation to cancel the failover of a recovery plan.",
@@ -9797,7 +9842,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_FailoverCommit",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute commit failover of the recovery plan.",
         "description": "The operation to commit the failover of a recovery plan.",
@@ -9864,7 +9909,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_PlannedFailover",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute planned failover of the recovery plan.",
         "description": "The operation to start the planned failover of a recovery plan.",
@@ -9940,7 +9985,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_Reprotect",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute reprotect of the recovery plan.",
         "description": "The operation to reprotect(reverse replicate) a recovery plan. This api is for deprecated scenarios and no longer works.",
@@ -10007,7 +10052,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_TestFailover",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute test failover of the recovery plan.",
         "description": "The operation to start the test failover of a recovery plan.",
@@ -10083,7 +10128,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_TestFailoverCleanup",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute test failover cleanup of the recovery plan.",
         "description": "The operation to cleanup test failover of a recovery plan.",
@@ -10159,7 +10204,7 @@
       "post": {
         "operationId": "ReplicationRecoveryPlans_UnplannedFailover",
         "tags": [
-          "RecoveryPlans"
+          "ReplicationRecoveryPlans"
         ],
         "summary": "Execute unplanned failover of the recovery plan.",
         "description": "The operation to start the unplanned failover of a recovery plan.",
@@ -10234,6 +10279,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryServicesProviders": {
       "get": {
         "operationId": "ReplicationRecoveryServicesProviders_List",
+        "tags": [
+          "ReplicationRecoveryServicesProviders"
+        ],
         "summary": "Gets the list of registered recovery services providers in the vault. This is a view only api.",
         "description": "Lists the registered recovery services providers in the vault.",
         "parameters": [
@@ -10275,6 +10323,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassificationMappings": {
       "get": {
         "operationId": "ReplicationStorageClassificationMappings_List",
+        "tags": [
+          "ReplicationStorageClassificationMappings"
+        ],
         "summary": "Gets the list of storage classification mappings objects under a vault.",
         "description": "Lists the storage classification mappings in the vault.",
         "parameters": [
@@ -10316,6 +10367,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassifications": {
       "get": {
         "operationId": "ReplicationStorageClassifications_List",
+        "tags": [
+          "ReplicationStorageClassifications"
+        ],
         "summary": "Gets the list of storage classification objects under a vault.",
         "description": "Lists the storage classifications in the vault.",
         "parameters": [
@@ -10357,6 +10411,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems": {
       "get": {
         "operationId": "SupportedOperatingSystems_Get",
+        "tags": [
+          "SupportedOperatingSystems"
+        ],
         "summary": "Gets the data of supported operating systems by SRS.",
         "description": "Gets the data of supported operating systems by SRS.",
         "parameters": [
@@ -10402,6 +10459,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth": {
       "get": {
         "operationId": "ReplicationVaultHealth_Get",
+        "tags": [
+          "ReplicationVaultHealth"
+        ],
         "summary": "Gets the health summary for the vault.",
         "description": "Gets the health details of the vault.",
         "parameters": [
@@ -10440,6 +10500,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh": {
       "post": {
         "operationId": "ReplicationVaultHealth_Refresh",
+        "tags": [
+          "ReplicationVaultHealth"
+        ],
         "summary": "Refreshes health summary of the vault.",
         "description": "Refreshes health summary of the vault.",
         "parameters": [
@@ -10498,7 +10561,7 @@
       "get": {
         "operationId": "ReplicationVaultSetting_List",
         "tags": [
-          "VaultSettings"
+          "ReplicationVaultSetting"
         ],
         "summary": "Gets the list of vault setting.",
         "description": "Gets the list of vault setting. This includes the Migration Hub connection settings.",
@@ -10542,7 +10605,7 @@
       "get": {
         "operationId": "ReplicationVaultSetting_Get",
         "tags": [
-          "VaultSettings"
+          "ReplicationVaultSetting"
         ],
         "summary": "Gets the vault setting.",
         "description": "Gets the vault setting. This includes the Migration Hub connection settings.",
@@ -10588,7 +10651,7 @@
       "put": {
         "operationId": "ReplicationVaultSetting_Create",
         "tags": [
-          "VaultSettings"
+          "ReplicationVaultSetting"
         ],
         "summary": "Updates vault setting. A vault setting object is a singleton per vault and it is always present by default.",
         "description": "The operation to configure vault setting.",
@@ -10660,6 +10723,9 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters": {
       "get": {
         "operationId": "ReplicationvCenters_List",
+        "tags": [
+          "ReplicationvCenters"
+        ],
         "summary": "Gets the list of vCenter registered under the vault.",
         "description": "Lists the vCenter servers registered in the vault.",
         "parameters": [
@@ -10702,7 +10768,7 @@
       "get": {
         "operationId": "ReplicationEligibilityResults_List",
         "tags": [
-          "ReplicationEligibilityResultsOperationGroup"
+          "ReplicationEligibilityResults"
         ],
         "summary": "Gets the validation errors in case the VM is unsuitable for protection.",
         "description": "Validates whether a given VM can be protected or not in which case returns list of errors.",
@@ -10739,7 +10805,7 @@
       "get": {
         "operationId": "ReplicationEligibilityResults_Get",
         "tags": [
-          "ReplicationEligibilityResultsOperationGroup"
+          "ReplicationEligibilityResults"
         ],
         "summary": "Gets the validation errors in case the VM is unsuitable for protection.",
         "description": "Validates whether a given VM can be protected or not in which case returns list of errors.",
@@ -22951,6 +23017,7 @@
     },
     "MigrationItemOperation": {
       "type": "string",
+      "description": "The allowed operations on the migration item based on the current migration state of the item.",
       "enum": [
         "DisableMigration",
         "TestMigrate",
@@ -23995,6 +24062,7 @@
     },
     "PossibleOperationsDirections": {
       "type": "string",
+      "description": "The failover direction.",
       "enum": [
         "PrimaryToRecovery",
         "RecoveryToPrimary"
@@ -26370,6 +26438,7 @@
     },
     "ReplicationProtectedItemOperation": {
       "type": "string",
+      "description": "The list of failover types.",
       "enum": [
         "ReverseReplicate",
         "Commit",

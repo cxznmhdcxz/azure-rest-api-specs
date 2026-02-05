@@ -13,12 +13,12 @@ using TypeSpec.OpenAPI;
 
 namespace Microsoft.RecoveryServices;
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("Operations")
 interface OperationsOperationGroup {
   /**
    * Operation to return the list of available operations.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Returns the list of available operations.")
   @autoRoute
   @get
@@ -31,12 +31,12 @@ interface OperationsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationAppliances")
 interface ReplicationAppliancesOperationGroup {
   /**
    * Gets the list of Azure Site Recovery appliances for the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of appliances.")
   @autoRoute
   @get
@@ -63,12 +63,12 @@ interface ReplicationAppliancesOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationNetworks")
 interface ReplicationNetworksOperationGroup {
   /**
    * Lists the networks available in a vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of networks. View-only API.")
   @autoRoute
   @get
@@ -89,12 +89,12 @@ interface ReplicationNetworksOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationNetworkMappings")
 interface ReplicationNetworkMappingsOperationGroup {
   /**
    * Lists all ASR network mappings in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets all the network mappings under a vault.")
   @autoRoute
   @get
@@ -115,12 +115,12 @@ interface ReplicationNetworkMappingsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationProtectionContainers")
 interface ReplicationProtectionContainersOperationGroup {
   /**
    * Lists the protection containers in a vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of all protection containers in a vault.")
   @autoRoute
   @get
@@ -141,12 +141,12 @@ interface ReplicationProtectionContainersOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationMigrationItems")
 interface ReplicationMigrationItemsOperationGroup {
   /**
    * Gets the list of migration items in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of migration items in the vault.")
   @autoRoute
   @get
@@ -185,12 +185,12 @@ interface ReplicationMigrationItemsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationProtectedItems")
 interface ReplicationProtectedItemsOperationGroup {
   /**
    * Gets the list of ASR replication protected items in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of replication protected items.")
   @autoRoute
   @get
@@ -223,12 +223,12 @@ interface ReplicationProtectedItemsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationProtectionClusters")
 interface ReplicationProtectionClustersOperationGroup {
   /**
    * Gets the list of ASR replication protected clusters in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of Replication protection clusters in vault.")
   @autoRoute
   @get
@@ -261,12 +261,12 @@ interface ReplicationProtectionClustersOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationProtectionContainerMappings")
 interface ReplicationProtectionContainerMappingsOperationGroup {
   /**
    * Lists the protection container mappings in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of all protection container mappings in a vault.")
   @autoRoute
   @get
@@ -287,12 +287,12 @@ interface ReplicationProtectionContainerMappingsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationRecoveryServicesProviders")
 interface ReplicationRecoveryServicesProvidersOperationGroup {
   /**
    * Lists the registered recovery services providers in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of registered recovery services providers in the vault. This is a view only api.")
   @autoRoute
   @get
@@ -313,12 +313,12 @@ interface ReplicationRecoveryServicesProvidersOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationStorageClassifications")
 interface ReplicationStorageClassificationsOperationGroup {
   /**
    * Lists the storage classifications in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of storage classification objects under a vault.")
   @autoRoute
   @get
@@ -339,12 +339,12 @@ interface ReplicationStorageClassificationsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationStorageClassificationMappings")
 interface ReplicationStorageClassificationMappingsOperationGroup {
   /**
    * Lists the storage classification mappings in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of storage classification mappings objects under a vault.")
   @autoRoute
   @get
@@ -365,12 +365,12 @@ interface ReplicationStorageClassificationMappingsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationvCenters")
 interface ReplicationvCentersOperationGroup {
   /**
    * Lists the vCenter servers registered in the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the list of vCenter registered under the vault.")
   @autoRoute
   @get
@@ -391,12 +391,12 @@ interface ReplicationvCentersOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationJobs")
 interface ReplicationJobsOperationGroup {
   /**
    * The operation to export the details of the Azure Site Recovery jobs of the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Exports the details of the Azure Site Recovery jobs of the vault.")
   @autoRoute
   @action("replicationJobs/export")
@@ -416,12 +416,12 @@ interface ReplicationJobsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("SupportedOperatingSystems")
 interface SupportedOperatingSystemsOperationGroup {
   /**
    * Gets the data of supported operating systems by SRS.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the data of supported operating systems by SRS.")
   @autoRoute
   @get
@@ -447,12 +447,12 @@ interface SupportedOperatingSystemsOperationGroup {
   >;
 }
 
-#suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-interface-requires-decorator" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@armResourceOperations
+@tag("ReplicationVaultHealth")
 interface ReplicationVaultHealthOperationGroup {
   /**
    * Gets the health details of the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Gets the health summary for the vault.")
   @autoRoute
   @get
@@ -473,7 +473,6 @@ interface ReplicationVaultHealthOperationGroup {
   /**
    * Refreshes health summary of the vault.
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @summary("Refreshes health summary of the vault.")
   @autoRoute
   @action("replicationVaultHealth/default/refresh")
