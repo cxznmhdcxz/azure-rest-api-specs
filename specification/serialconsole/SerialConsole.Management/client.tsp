@@ -5,5 +5,5 @@ using Azure.ClientGenerator.Core;
 
 @@clientName(Microsoft.SerialConsole,
   "MicrosoftSerialConsoleClient",
-  "javascript"
+  "javascript,python"
 );
