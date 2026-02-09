@@ -7,3 +7,205 @@ using Azure.ClientGenerator.Core;
   "SiteRecoveryManagementClient",
   "javascript"
 );
+
+@@clientName(Microsoft.RecoveryServices.ASRTask, "AsrTask", "java");
+@@clientName(Microsoft.RecoveryServices.IPConfigInputDetails,
+  "IpConfigInputDetails",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails,
+  "IpConfigDetails",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.ExistingRecoveryRecoveryResourceGroup,
+  "ExistingRecoveryResourceGroup",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageAzureV2SwitchProviderProviderInput,
+  "InMageAzureV2SwitchProviderInput",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.SwitchProviderProviderSpecificInput,
+  "SwitchProviderSpecificInput",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.UpdateApplianceForReplicationProtectedItemProviderSpecificInput,
+  "UpdateReplicationProtectedItemProviderSpecificInput",
+  "java"
+);
+
+@@clientLocation(Microsoft.RecoveryServices.StorageClassifications.get,
+  "StorageClassifications",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.StorageClassifications.listByReplicationFabrics,
+  "StorageClassifications",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.StorageClassificationMappings.get,
+  "StorageClassificationMappings",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.StorageClassificationMappings.create,
+  "StorageClassificationMappings",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.StorageClassificationMappings.delete,
+  "StorageClassificationMappings",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.StorageClassificationMappings.listByReplicationStorageClassifications,
+  "StorageClassificationMappings",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.ReplicationStorageClassificationsOperationGroup.list,
+  "StorageClassifications",
+  "java"
+);
+@@clientLocation(Microsoft.RecoveryServices.ReplicationStorageClassificationMappingsOperationGroup.list,
+  "StorageClassificationMappings",
+  "java"
+);
+
+@@clientName(Microsoft.RecoveryServices.GatewayOperationDetails.hostName,
+  "hostname",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareDetails.hostName,
+  "hostname",
+  "java"
+);
+
+@@clientName(Microsoft.RecoveryServices.InMageAzureV2ProtectedDiskDetails.resyncLastDataTransferTimeUTC,
+  "resyncLastDataTransferTimeUtc",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageAzureV2SwitchProviderProviderInput.targetApplianceID,
+  "targetApplianceId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageAzureV2SwitchProviderProviderInput.targetFabricID,
+  "targetFabricId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageAzureV2SwitchProviderProviderInput.targetVaultID,
+  "targetVaultId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageProtectedDiskDetails.resyncLastDataTransferTimeUTC,
+  "resyncLastDataTransferTimeUtc",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.sourceIPAddress,
+  "sourceIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.sourceIPAddressType,
+  "sourceIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.targetIPAddress,
+  "targetIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.targetIPAddressType,
+  "targetIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.testIPAddress,
+  "testIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicDetails.testIPAddressType,
+  "testIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicInput.targetStaticIPAddress,
+  "targetStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.InMageRcmNicInput.testStaticIPAddress,
+  "testStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.recoveryIPAddressType,
+  "recoveryIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.recoveryPublicIPAddressId,
+  "recoveryPublicIpAddressId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.recoveryStaticIPAddress,
+  "recoveryStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.staticIPAddress,
+  "staticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.tfoPublicIPAddressId,
+  "tfoPublicIpAddressId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigDetails.tfoStaticIPAddress,
+  "tfoStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigInputDetails.recoveryPublicIPAddressId,
+  "recoveryPublicIpAddressId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigInputDetails.recoveryStaticIPAddress,
+  "recoveryStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigInputDetails.tfoPublicIPAddressId,
+  "tfoPublicIpAddressId",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.IPConfigInputDetails.tfoStaticIPAddress,
+  "tfoStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.ReplicationProtectionIntentProperties.creationTimeUTC,
+  "creationTimeUtc",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.sourceIPAddress,
+  "sourceIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.sourceIPAddressType,
+  "sourceIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.targetIPAddress,
+  "targetIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.targetIPAddressType,
+  "targetIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.testIPAddress,
+  "testIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicDetails.testIPAddressType,
+  "testIpAddressType",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicInput.targetStaticIPAddress,
+  "targetStaticIpAddress",
+  "java"
+);
+@@clientName(Microsoft.RecoveryServices.VMwareCbtNicInput.testStaticIPAddress,
+  "testStaticIpAddress",
+  "java"
+);
+
+@@clientName(Microsoft.RecoveryServices.TargetComputeSizeProperties.vCPUsAvailable,
+  "vCpusAvailable",
+  "java"
+);
