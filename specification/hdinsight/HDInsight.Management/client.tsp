@@ -15,3 +15,4 @@ using Azure.ClientGenerator.Core;
   "RSA_OAEP256",
   "python"
 );
+@@clientName(Role.VMGroupName, "$DO_NOT_NORMALIZE$vMGroupName", "javascript");
