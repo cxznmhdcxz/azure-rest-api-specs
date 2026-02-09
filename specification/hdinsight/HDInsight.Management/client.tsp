@@ -4,7 +4,6 @@ import "./main.tsp";
 using Microsoft.HDInsight;
 using Azure.ClientGenerator.Core;
 
-@@alternateType(Role.VMGroupName, "vMGroupName", "javascript");
 @@clientName(Microsoft.HDInsight,
   "HDInsightManagementClient",
   "javascript,python"
