@@ -23848,7 +23848,6 @@
           "description": "Origin. The intended executor of the operation; governs the display of the operation in the RBAC UX and the audit logs UX. Default value is \"user,system\"."
         },
         "properties": {
-          "$ref": "#/definitions/OperationsDiscoveryProperties",
           "description": "Properties. Reserved for future use."
         }
       }
@@ -23873,10 +23872,6 @@
       "required": [
         "value"
       ]
-    },
-    "OperationsDiscoveryProperties": {
-      "type": "object",
-      "description": "ClientDiscovery properties."
     },
     "PauseReplicationInput": {
       "type": "object",
@@ -27153,31 +27148,6 @@
         }
       }
     },
-    "Resource": {
-      "type": "object",
-      "description": "Azure resource.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Resource Id",
-          "readOnly": true
-        },
-        "name": {
-          "type": "string",
-          "description": "Resource Name",
-          "readOnly": true
-        },
-        "type": {
-          "type": "string",
-          "description": "Resource Type",
-          "readOnly": true
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource Location"
-        }
-      }
-    },
     "ResourceHealthSummary": {
       "type": "object",
       "description": "Base class to define the health summary of the resources contained under an Arm resource.",
@@ -27969,11 +27939,15 @@
         "properties": {
           "$ref": "#/definitions/SupportedOSProperties",
           "description": "The supported operating systems properties."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource Location"
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Resource"
+          "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/Resource"
         }
       ]
     },
@@ -30519,11 +30493,15 @@
         "properties": {
           "$ref": "#/definitions/VaultHealthProperties",
           "description": "The vault health related data."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource Location"
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Resource"
+          "$ref": "../../../../../../common-types/resource-management/v5/types.json#/definitions/Resource"
         }
       ]
     },

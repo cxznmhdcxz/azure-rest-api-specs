@@ -1536,14 +1536,9 @@ model OperationsDiscovery {
   /**
    * Properties. Reserved for future use.
    */
-  properties?: OperationsDiscoveryProperties;
+  #suppress "@azure-tools/typespec-azure-core/no-unknown" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+  properties?: unknown;
 }
-
-/**
- * ClientDiscovery properties.
- */
-#suppress "@azure-tools/typespec-azure-resource-manager/no-empty-model" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-model OperationsDiscoveryProperties {}
 
 /**
  * Contains the localized display information for this particular operation / action. These value will be used by several clients for (1) custom role definitions for RBAC; (2) complex query filters for the event service; and (3) audit history / records for management operations.
@@ -6206,11 +6201,17 @@ model RecoveryPlanUnplannedFailoverInputProperties {
  * Supported operating systems.
  */
 #suppress "@azure-tools/typespec-azure-core/composition-over-inheritance" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-model SupportedOperatingSystems extends Resource {
+model SupportedOperatingSystems
+  extends Azure.ResourceManager.Foundations.Resource {
   /**
    * The supported operating systems properties.
    */
   properties?: SupportedOSProperties;
+
+  /**
+   * Resource Location
+   */
+  location?: string;
 }
 
 /**
@@ -6281,11 +6282,16 @@ model OSVersionWrapper {
  * Vault health details definition.
  */
 #suppress "@azure-tools/typespec-azure-core/composition-over-inheritance" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-model VaultHealthDetails extends Resource {
+model VaultHealthDetails extends Azure.ResourceManager.Foundations.Resource {
   /**
    * The vault health related data.
    */
   properties?: VaultHealthProperties;
+
+  /**
+   * Resource Location
+   */
+  location?: string;
 }
 
 /**
