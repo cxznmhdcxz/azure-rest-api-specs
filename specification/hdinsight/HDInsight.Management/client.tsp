@@ -1,6 +1,7 @@
 import "@azure-tools/typespec-client-generator-core";
 import "./main.tsp";
 
+using Microsoft.HDInsight;
 using Azure.ClientGenerator.Core;
 
 @@clientName(Microsoft.HDInsight,
