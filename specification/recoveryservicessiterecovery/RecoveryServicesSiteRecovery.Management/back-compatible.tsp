@@ -373,8 +373,3 @@ using Microsoft.RecoveryServices;
 @@clientName(ReplicationJobsOperationGroup.export::parameters.body,
   "jobQueryParameter"
 );
-
-@@clientName(SwitchProviderProviderSpecificInput,
-  "SwitchProviderSpecificInput",
-  "go"
-);

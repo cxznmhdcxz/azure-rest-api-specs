@@ -209,3 +209,8 @@ using Azure.ClientGenerator.Core;
   "vCpusAvailable",
   "java"
 );
+
+@@clientName(Microsoft.RecoveryServices.SwitchProviderProviderSpecificInput,
+  "SwitchProviderSpecificInput",
+  "go"
+);
