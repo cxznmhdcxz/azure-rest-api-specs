@@ -5,8 +5,5 @@ using Azure.ClientGenerator.Core;
 
 @@clientName(Microsoft.SerialConsole,
   "MicrosoftSerialConsoleClient",
-  "javascript,python"
+  "javascript,python,go"
 );
-@@clientLocation(getConsoleStatus, "MicrosoftSerialConsoleClient", "go");
-@@clientLocation(disableConsole, "MicrosoftSerialConsoleClient", "go");
-@@clientLocation(enableConsole, "MicrosoftSerialConsoleClient", "go");
