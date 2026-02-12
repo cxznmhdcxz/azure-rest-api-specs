@@ -24,11 +24,11 @@ using Azure.ClientGenerator.Core;
 );
 @@clientName(Microsoft.RecoveryServices.ExistingRecoveryRecoveryResourceGroup,
   "ExistingRecoveryResourceGroup",
-  "java"
+  "java,go"
 );
 @@clientName(Microsoft.RecoveryServices.InMageAzureV2SwitchProviderProviderInput,
   "InMageAzureV2SwitchProviderInput",
-  "java"
+  "java,go"
 );
 @@clientName(Microsoft.RecoveryServices.SwitchProviderProviderSpecificInput,
   "SwitchProviderSpecificInput",
