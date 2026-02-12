@@ -9975,7 +9975,16 @@ model FabricQueryParameter {
 /**
  * This class represents the fabric replication group task details.
  */
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@Azure.ClientGenerator.Core.Legacy.hierarchyBuilding(JobTaskDetails)
 model FabricReplicationGroupTaskDetails extends TaskTypeDetails {
+  /**
+   * The type of task details.
+   */
+  instanceType: "FabricReplicationGroupTaskDetails";
+
+  ...JobTaskDetailsProperties;
+
   /**
    * The skipped reason.
    */
@@ -9985,28 +9994,21 @@ model FabricReplicationGroupTaskDetails extends TaskTypeDetails {
    * The skipped reason string.
    */
   skippedReasonString?: string;
+}
 
+alias JobTaskDetailsProperties = {
   /**
    * The job entity.
    */
   jobTask?: JobEntity;
-
-  /**
-   * The type of task details.
-   */
-  instanceType: "FabricReplicationGroupTaskDetails";
-}
+};
 
 /**
  * This class represents a task which is actually a workflow so that one can navigate to its individual drill down.
  */
 model JobTaskDetails extends TaskTypeDetails {
-  /**
-   * The job entity.
-   */
-  jobTask?: JobEntity;
-
   instanceType: "JobTaskDetails";
+  ...JobTaskDetailsProperties;
 }
 
 /**
@@ -11416,12 +11418,23 @@ model HyperVReplicaBluePolicyDetails extends PolicyProviderSpecificDetails {
  * HyperV Replica Blue policy input.
  */
 #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@Azure.ClientGenerator.Core.Legacy.hierarchyBuilding(HyperVReplicaPolicyInput)
 model HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInput {
+  /**
+   * The class type.
+   */
+  instanceType: "HyperVReplica2012R2";
+
+  ...HyperVReplicaPolicyInputProperties;
+
   /**
    * A value indicating the replication interval.
    */
   replicationFrequencyInSeconds?: int32;
+}
 
+alias HyperVReplicaPolicyInputProperties = {
   /**
    * A value indicating the number of recovery points.
    */
@@ -11471,12 +11484,7 @@ model HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInput {
    * A value indicating whether the VM has to be auto deleted.
    */
   replicaDeletion?: string;
-
-  /**
-   * The class type.
-   */
-  instanceType: "HyperVReplica2012R2";
-}
+};
 
 /**
  * Hyper-V Replica specific policy Input.
@@ -11488,55 +11496,7 @@ model HyperVReplicaPolicyInput extends PolicyProviderSpecificInput {
    */
   instanceType: "HyperVReplica2012";
 
-  /**
-   * A value indicating the number of recovery points.
-   */
-  recoveryPoints?: int32;
-
-  /**
-   * A value indicating the application consistent frequency.
-   */
-  applicationConsistentSnapshotFrequencyInHours?: int32;
-
-  /**
-   * A value indicating whether compression has to be enabled.
-   */
-  compression?: string;
-
-  /**
-   * A value indicating whether IR is online.
-   */
-  initialReplicationMethod?: string;
-
-  /**
-   * A value indicating the online IR start time.
-   */
-  onlineReplicationStartTime?: string;
-
-  /**
-   * A value indicating the offline IR import path.
-   */
-  offlineReplicationImportPath?: string;
-
-  /**
-   * A value indicating the offline IR export path.
-   */
-  offlineReplicationExportPath?: string;
-
-  /**
-   * A value indicating the recovery HTTPS port.
-   */
-  replicationPort?: int32;
-
-  /**
-   * A value indicating the authentication type.
-   */
-  allowedAuthenticationType?: int32;
-
-  /**
-   * A value indicating whether the VM has to be auto deleted.
-   */
-  replicaDeletion?: string;
+  ...HyperVReplicaPolicyInputProperties;
 }
 
 /**
@@ -11716,11 +11676,7 @@ model HyperVSiteDetails extends FabricSpecificDetails {
   instanceType: "HyperVSite";
 }
 
-/**
- * Single Host fabric provider specific VM settings.
- */
-#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-model HyperVVirtualMachineDetails extends ConfigurationSettings {
+alias HyperVVirtualMachineDetailsProperties = {
   /**
    * The source id of the object.
    */
@@ -11762,7 +11718,14 @@ model HyperVVirtualMachineDetails extends ConfigurationSettings {
    */
   #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   hyperVHostId?: string;
+};
 
+/**
+ * Single Host fabric provider specific VM settings.
+ */
+#suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+model HyperVVirtualMachineDetails extends ConfigurationSettings {
+  ...HyperVVirtualMachineDetailsProperties;
   instanceType: "HyperVVirtualMachine";
 }
 
@@ -17461,10 +17424,7 @@ model RecoveryPlanAutomationRunbookActionDetails
   instanceType: "AutomationRunbookActionDetails";
 }
 
-/**
- * This class represents the recovery plan group task.
- */
-model RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
+alias RecoveryPlanGroupTaskDetailsProperties = {
   /**
    * The name.
    */
@@ -17479,8 +17439,14 @@ model RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
    * The group type.
    */
   rpGroupType?: string;
+};
 
+/**
+ * This class represents the recovery plan group task.
+ */
+model RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
   instanceType: "RecoveryPlanGroupTaskDetails";
+  ...RecoveryPlanGroupTaskDetailsProperties;
 }
 
 /**
@@ -17654,21 +17620,12 @@ model RecoveryPlanScriptActionDetails extends RecoveryPlanActionDetails {
 /**
  * This class represents the recovery plan shutdown group task details.
  */
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@Azure.ClientGenerator.Core.Legacy.hierarchyBuilding(
+  RecoveryPlanGroupTaskDetails
+)
 model RecoveryPlanShutdownGroupTaskDetails extends GroupTaskDetails {
-  /**
-   * The name.
-   */
-  name?: string;
-
-  /**
-   * The group identifier.
-   */
-  groupId?: string;
-
-  /**
-   * The group type.
-   */
-  rpGroupType?: string;
+  ...RecoveryPlanGroupTaskDetailsProperties;
 
   /**
    * The type of task details.
@@ -17839,7 +17796,16 @@ model TestFailoverJobDetails extends JobDetails {
 /**
  * This class represents the virtual machine task details.
  */
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@Azure.ClientGenerator.Core.Legacy.hierarchyBuilding(JobTaskDetails)
 model VirtualMachineTaskDetails extends TaskTypeDetails {
+  /**
+   * The type of task details.
+   */
+  instanceType: "VirtualMachineTaskDetails";
+
+  ...JobTaskDetailsProperties;
+
   /**
    * The skipped reason.
    */
@@ -17849,16 +17815,6 @@ model VirtualMachineTaskDetails extends TaskTypeDetails {
    * The skipped reason string.
    */
   skippedReasonString?: string;
-
-  /**
-   * The job entity.
-   */
-  jobTask?: JobEntity;
-
-  /**
-   * The type of task details.
-   */
-  instanceType: "VirtualMachineTaskDetails";
 }
 
 /**
@@ -17940,48 +17896,12 @@ model VmmToVmmUpdateNetworkMappingInput
 /**
  * VMM fabric provider specific VM settings.
  */
+#suppress "@azure-tools/typespec-azure-core/no-legacy-usage" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@Azure.ClientGenerator.Core.Legacy.hierarchyBuilding(
+  HyperVVirtualMachineDetails
+)
 model VmmVirtualMachineDetails extends ConfigurationSettings {
-  /**
-   * The source id of the object.
-   */
-  sourceItemId?: string;
-
-  /**
-   * The id of the object in fabric.
-   */
-  generation?: string;
-
-  /**
-   * The Last replication time.
-   */
-  osDetails?: OSDetails;
-
-  /**
-   * The Last successful failover time.
-   */
-  #suppress "@azure-tools/typespec-azure-resource-manager/missing-x-ms-identifiers" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-  diskDetails?: DiskDetails[];
-
-  /**
-   * A value indicating whether the VM has a physical disk attached. String value of SrsDataContract.PresenceStatus enum.
-   */
-  hasPhysicalDisk?: PresenceStatus;
-
-  /**
-   * A value indicating whether the VM has a fibre channel adapter attached. String value of SrsDataContract.PresenceStatus enum.
-   */
-  hasFibreChannelAdapter?: PresenceStatus;
-
-  /**
-   * A value indicating whether the VM has a shared VHD attached. String value of SrsDataContract.PresenceStatus enum.
-   */
-  hasSharedVhd?: PresenceStatus;
-
-  /**
-   * The Id of the hyper-v host in fabric.
-   */
-  #suppress "@azure-tools/typespec-azure-core/casing-style" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-  hyperVHostId?: string;
+  ...HyperVVirtualMachineDetailsProperties;
 
   /**
    * Gets the class type. Overridden in derived classes.

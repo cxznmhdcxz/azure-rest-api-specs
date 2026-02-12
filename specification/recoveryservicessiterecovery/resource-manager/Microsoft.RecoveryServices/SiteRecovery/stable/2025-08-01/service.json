@@ -15832,15 +15832,11 @@
         "skippedReasonString": {
           "type": "string",
           "description": "The skipped reason string."
-        },
-        "jobTask": {
-          "$ref": "#/definitions/JobEntity",
-          "description": "The job entity."
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/TaskTypeDetails"
+          "$ref": "#/definitions/JobTaskDetails"
         }
       ],
       "x-ms-discriminator-value": "FabricReplicationGroupTaskDetails"
@@ -17434,55 +17430,11 @@
           "type": "integer",
           "format": "int32",
           "description": "A value indicating the replication interval."
-        },
-        "recoveryPoints": {
-          "type": "integer",
-          "format": "int32",
-          "description": "A value indicating the number of recovery points."
-        },
-        "applicationConsistentSnapshotFrequencyInHours": {
-          "type": "integer",
-          "format": "int32",
-          "description": "A value indicating the application consistent frequency."
-        },
-        "compression": {
-          "type": "string",
-          "description": "A value indicating whether compression has to be enabled."
-        },
-        "initialReplicationMethod": {
-          "type": "string",
-          "description": "A value indicating whether IR is online."
-        },
-        "onlineReplicationStartTime": {
-          "type": "string",
-          "description": "A value indicating the online IR start time."
-        },
-        "offlineReplicationImportPath": {
-          "type": "string",
-          "description": "A value indicating the offline IR import path."
-        },
-        "offlineReplicationExportPath": {
-          "type": "string",
-          "description": "A value indicating the offline IR export path."
-        },
-        "replicationPort": {
-          "type": "integer",
-          "format": "int32",
-          "description": "A value indicating the recovery HTTPS port."
-        },
-        "allowedAuthenticationType": {
-          "type": "integer",
-          "format": "int32",
-          "description": "A value indicating the authentication type."
-        },
-        "replicaDeletion": {
-          "type": "string",
-          "description": "A value indicating whether the VM has to be auto deleted."
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/PolicyProviderSpecificInput"
+          "$ref": "#/definitions/HyperVReplicaPolicyInput"
         }
       ],
       "x-ms-discriminator-value": "HyperVReplica2012R2"
@@ -25688,23 +25640,9 @@
     "RecoveryPlanShutdownGroupTaskDetails": {
       "type": "object",
       "description": "This class represents the recovery plan shutdown group task details.",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name."
-        },
-        "groupId": {
-          "type": "string",
-          "description": "The group identifier."
-        },
-        "rpGroupType": {
-          "type": "string",
-          "description": "The group type."
-        }
-      },
       "allOf": [
         {
-          "$ref": "#/definitions/GroupTaskDetails"
+          "$ref": "#/definitions/RecoveryPlanGroupTaskDetails"
         }
       ],
       "x-ms-discriminator-value": "RecoveryPlanShutdownGroupTaskDetails"
@@ -30641,15 +30579,11 @@
         "skippedReasonString": {
           "type": "string",
           "description": "The skipped reason string."
-        },
-        "jobTask": {
-          "$ref": "#/definitions/JobEntity",
-          "description": "The job entity."
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/TaskTypeDetails"
+          "$ref": "#/definitions/JobTaskDetails"
         }
       ],
       "x-ms-discriminator-value": "VirtualMachineTaskDetails"
@@ -30817,46 +30751,9 @@
     "VmmVirtualMachineDetails": {
       "type": "object",
       "description": "VMM fabric provider specific VM settings.",
-      "properties": {
-        "sourceItemId": {
-          "type": "string",
-          "description": "The source id of the object."
-        },
-        "generation": {
-          "type": "string",
-          "description": "The id of the object in fabric."
-        },
-        "osDetails": {
-          "$ref": "#/definitions/OSDetails",
-          "description": "The Last replication time."
-        },
-        "diskDetails": {
-          "type": "array",
-          "description": "The Last successful failover time.",
-          "items": {
-            "$ref": "#/definitions/DiskDetails"
-          }
-        },
-        "hasPhysicalDisk": {
-          "$ref": "#/definitions/PresenceStatus",
-          "description": "A value indicating whether the VM has a physical disk attached. String value of SrsDataContract.PresenceStatus enum."
-        },
-        "hasFibreChannelAdapter": {
-          "$ref": "#/definitions/PresenceStatus",
-          "description": "A value indicating whether the VM has a fibre channel adapter attached. String value of SrsDataContract.PresenceStatus enum."
-        },
-        "hasSharedVhd": {
-          "$ref": "#/definitions/PresenceStatus",
-          "description": "A value indicating whether the VM has a shared VHD attached. String value of SrsDataContract.PresenceStatus enum."
-        },
-        "hyperVHostId": {
-          "type": "string",
-          "description": "The Id of the hyper-v host in fabric."
-        }
-      },
       "allOf": [
         {
-          "$ref": "#/definitions/ConfigurationSettings"
+          "$ref": "#/definitions/HyperVVirtualMachineDetails"
         }
       ],
       "x-ms-discriminator-value": "VmmVirtualMachine"
