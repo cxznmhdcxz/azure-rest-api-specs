@@ -53,7 +53,7 @@ interface ReplicationEligibilityResultsOperationGroup {
    * Validates whether a given VM can be protected or not in which case returns list of errors.
    */
   @summary("Gets the validation errors in case the VM is unsuitable for protection.")
-  list is ArmResourceListByParent<
+  list is Azure.ResourceManager.Legacy.ArmListSinglePageByParent<
     ReplicationEligibilityResults,
     BaseParameters = ReplicationEligibilityResultsParentParam,
     Response = ArmResponse<ReplicationEligibilityResultsCollection>,
