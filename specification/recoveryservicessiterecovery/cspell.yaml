@@ -31,7 +31,7 @@ overrides:
     words:
       - xcool
   - filename: >-
-      **/specification/recoveryservicessiterecovery/RecoveryServicesSiteRecovery.Management/models.tsp
+      **/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/models.tsp
     words:
       - Seleted
       - Orignal
