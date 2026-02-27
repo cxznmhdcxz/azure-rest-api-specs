@@ -128,7 +128,7 @@ interface FunctionsExtension {
   invokeFunctionsHost is FunctionExtensionOps.ActionSync<
     Revision,
     void,
-    ArmResponse<string>
+    ArmResponse<InvokeResponse>
   >;
 }
 

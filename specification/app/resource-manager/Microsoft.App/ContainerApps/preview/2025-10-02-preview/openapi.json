@@ -314,10 +314,6 @@
           "Subscriptions"
         ],
         "description": "Get the verification id of a subscription used for verifying custom domains",
-        "produces": [
-          "text/plain",
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
@@ -5378,10 +5374,6 @@
         ],
         "summary": "Proxies a Functions host call to the function app backed by the container app.",
         "description": "Proxies a Functions host call to the function app backed by the container app.",
-        "produces": [
-          "text/plain",
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
@@ -5421,7 +5413,7 @@
           "200": {
             "description": "Azure operation completed successfully.",
             "schema": {
-              "type": "string"
+              "$ref": "#/definitions/InvokeResponse"
             }
           },
           "default": {
@@ -11084,6 +11076,10 @@
                 "type": "string",
                 "description": "A link to the status monitor"
               },
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
               "Retry-After": {
                 "type": "integer",
                 "format": "int32",
@@ -12227,7 +12223,11 @@
         "properties": {
           "$ref": "#/definitions/BuildProperties",
           "description": "The resource-specific properties for this resource.",
-          "x-ms-client-flatten": true
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
         }
       },
       "allOf": [
@@ -12402,7 +12402,11 @@
         "properties": {
           "$ref": "#/definitions/BuilderProperties",
           "description": "The resource-specific properties for this resource.",
-          "x-ms-client-flatten": true
+          "x-ms-client-flatten": true,
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
         },
         "identity": {
           "$ref": "../../../../../../common-types/resource-management/v5/managedidentity.json#/definitions/ManagedServiceIdentity",
@@ -13427,7 +13431,7 @@
       "description": "Container App auto patch configuration.",
       "properties": {
         "patchingMode": {
-          "$ref": "#/definitions/PatchingMode",
+          "$ref": "#/definitions/patchingMode",
           "description": "Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching."
         }
       }
@@ -13674,6 +13678,7 @@
         "properties": {
           "$ref": "#/definitions/ContainerAppsBuildProperties",
           "description": "The resource-specific properties for this resource.",
+          "readOnly": true,
           "x-ms-client-flatten": true
         }
       },
@@ -13753,7 +13758,11 @@
       "properties": {
         "properties": {
           "$ref": "#/definitions/PatchProperties",
-          "description": "Properties that describes current states of the patch resource."
+          "description": "Properties that describes current states of the patch resource.",
+          "x-ms-mutability": [
+            "read",
+            "update"
+          ]
         }
       },
       "allOf": [
@@ -16776,6 +16785,9 @@
         }
       ]
     },
+    "InvokeResponse": {
+      "type": "string"
+    },
     "IpSecurityRestrictionRule": {
       "type": "object",
       "description": "Rule to restrict incoming IP address.",
@@ -19132,36 +19144,6 @@
             "name": "Other",
             "value": "Other",
             "description": "Other"
-          }
-        ]
-      }
-    },
-    "PatchingMode": {
-      "type": "string",
-      "description": "Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.",
-      "enum": [
-        "Automatic",
-        "Manual",
-        "Disabled"
-      ],
-      "x-ms-enum": {
-        "name": "PatchingMode",
-        "modelAsString": true,
-        "values": [
-          {
-            "name": "Automatic",
-            "value": "Automatic",
-            "description": "Automatic"
-          },
-          {
-            "name": "Manual",
-            "value": "Manual",
-            "description": "Manual"
-          },
-          {
-            "name": "Disabled",
-            "value": "Disabled",
-            "description": "Disabled"
           }
         ]
       }
@@ -21955,6 +21937,36 @@
           "format": "int32",
           "description": "Current count of nodes."
         }
+      }
+    },
+    "patchingMode": {
+      "type": "string",
+      "description": "Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.",
+      "enum": [
+        "Automatic",
+        "Manual",
+        "Disabled"
+      ],
+      "x-ms-enum": {
+        "name": "patchingMode",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Automatic",
+            "value": "Automatic",
+            "description": "Automatic"
+          },
+          {
+            "name": "Manual",
+            "value": "Manual",
+            "description": "Manual"
+          },
+          {
+            "name": "Disabled",
+            "value": "Disabled",
+            "description": "Disabled"
+          }
+        ]
       }
     },
     "workloadProfileStates": {

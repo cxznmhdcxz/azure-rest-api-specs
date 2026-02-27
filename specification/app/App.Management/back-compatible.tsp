@@ -294,3 +294,11 @@ using Microsoft.App;
 @@clientName(ContainerAppsSourceControls.createOrUpdate::parameters.resource,
   "sourceControlEnvelope"
 );
+
+@@visibility(BuildResource.properties, Lifecycle.Create, Lifecycle.Read);
+@@visibility(BuilderResource.properties, Lifecycle.Create, Lifecycle.Read);
+@@visibility(ContainerAppsPatchResource.properties,
+  Lifecycle.Read,
+  Lifecycle.Update
+);
+@@visibility(ContainerAppsBuildResource.properties, Lifecycle.Read);

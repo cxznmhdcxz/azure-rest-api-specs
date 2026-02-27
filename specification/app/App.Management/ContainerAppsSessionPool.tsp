@@ -44,10 +44,12 @@ interface ContainerAppsSessionPools {
   #suppress "@azure-tools/typespec-azure-resource-manager/lro-location-header" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @patch(#{ implicitOptionality: false })
   @summary("Update properties of a session pool")
+  @Azure.Core.useFinalStateVia("azure-async-operation")
   update is ArmCustomPatchAsync<
     SessionPool,
     PatchModel = SessionPoolUpdatableProperties,
     LroHeaders = ArmAsyncOperationHeader<FinalResult = SessionPool> &
+      ArmLroLocationHeader<FinalResult = SessionPool> &
       Azure.Core.Foundations.RetryAfterHeader
   >;
 

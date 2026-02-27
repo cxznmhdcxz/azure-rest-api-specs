@@ -20,7 +20,11 @@ model Object is Record<unknown>;
 /**
  * Custom domain verification Id of a subscription
  */
+@mediaTypeHint("application/json")
 scalar CustomDomainVerificationId extends string;
+
+@mediaTypeHint("application/json")
+scalar InvokeResponse extends string;
 
 /**
  * indicates whether the profile is default for the location.
@@ -4989,7 +4993,7 @@ union ContainerAppRunningStatus {
 /**
  * Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.
  */
-union PatchingMode {
+union patchingMode {
   string,
 
   /**
@@ -6817,7 +6821,7 @@ model ContainerAppPropertiesPatchingConfiguration {
   /**
    * Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.
    */
-  patchingMode?: PatchingMode;
+  patchingMode?: patchingMode;
 }
 
 /**
