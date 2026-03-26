@@ -45,3 +45,36 @@ using Azure.ClientGenerator.Core;
   autoMergeService: true,
 })
 namespace ApplicationInsightsManagementClient;
+
+// Disambiguate duplicate client names across merged sub-services (Python scope)
+@@clientName(Microsoft.Insights.TagsResource, "WebTestTagsResource", "python");
+@@clientName(LiveTokenApi.ErrorResponseLinkedStorage,
+  "LiveTokenErrorResponseLinkedStorage",
+  "python"
+);
+@@clientName(LiveTokenApi.ErrorResponseLinkedStorageError,
+  "LiveTokenErrorResponseLinkedStorageError",
+  "python"
+);
+@@clientName(DeletedWorkbookApi.CategoryType,
+  "DeletedWorkbookCategoryType",
+  "python"
+);
+@@clientName(DeletedWorkbookApi.WorkbookSharedTypeKind,
+  "DeletedWorkbookSharedTypeKind",
+  "python"
+);
+
+// Mitigate breaking changes from TypeSpec migration
+
+// Restore original operation group casing: WebTestLocationsOperations (was webTestLocationsOperations)
+@@clientName(WebTestLocation.webTestLocationsOperationGroup,
+  "WebTestLocations",
+  "python"
+);
+
+// Restore original enum name: SharedTypeKind (now WorkbookSharedTypeKind)
+@@clientName(WorkbooksApi.WorkbookSharedTypeKind, "SharedTypeKind", "python");
+
+// Restore original enum name: WebTestKindEnum (now WebTestKind)
+@@clientName(Microsoft.Insights.WebTestKind, "WebTestKindEnum", "python");
