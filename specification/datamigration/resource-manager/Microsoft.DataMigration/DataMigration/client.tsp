@@ -8,6 +8,19 @@ using Microsoft.DataMigration;
   "DataMigrationManagementClient",
   "javascript"
 );
+@@clientName(Microsoft.DataMigration,
+  "DataMigrationManagementClient",
+  "python"
+);
+
+@@clientName(ConnectToTargetSqlSqlDbSyncTaskInput,
+  "ConnectToTargetSqlDbSyncTaskInput",
+  "python"
+);
+@@clientName(ConnectToTargetSqlSqlDbSyncTaskProperties,
+  "ConnectToTargetSqlDbSyncTaskProperties",
+  "python"
+);
 
 @@clientName(ConnectToTargetSqlSqlDbSyncTaskProperties,
   "ConnectToTargetSQLDbSyncTaskProperties",

@@ -1,44 +1,45 @@
-parameters:
-  "service-dir":
-    default: "sdk/datamigration"
 emit:
-  - "@azure-tools/typespec-autorest"
-options:
-  "@azure-tools/typespec-autorest":
-    omit-unreachable-types: true
-    emitter-output-dir: "{project-root}"
-    output-file: "{version-status}/{version}/openapi.json"
-    emit-lro-options: "all"
-    arm-types-dir: "{project-root}/../../../../common-types/resource-management"
-    examples-dir: "{project-root}/examples"
-  "@azure-tools/typespec-python":
-    emitter-output-dir: "{output-dir}/{service-dir}/azure-mgmt-datamigration"
-    namespace: "azure.mgmt.datamigration"
-    generate-test: true
-    generate-sample: true
-    flavor: "azure"
-  "@azure-tools/typespec-java":
-    emitter-output-dir: "{output-dir}/{service-dir}/azure-resourcemanager-datamigration"
-    namespace: "com.azure.resourcemanager.datamigration"
-    service-name: "DataMigration"
-    flavor: azure
-  "@azure-tools/typespec-ts":
-    emitter-output-dir: "{output-dir}/{service-dir}/arm-datamigration"
-    flavor: azure
-    compatibility-lro: true
-    experimental-extensible-enums: true
-    package-details:
-      name: "@azure/arm-datamigration"
-  "@azure-tools/typespec-go":
-    service-dir: "sdk/resourcemanager/datamigration"
-    emitter-output-dir: "{output-dir}/{service-dir}/armdatamigration"
-    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armdatamigration"
-    fix-const-stuttering: true
-    flavor: "azure"
-    generate-samples: true
-    generate-fakes: true
-    head-as-boolean: true
-    inject-spans: true
+- '@azure-tools/typespec-autorest'
 linter:
   extends:
-    - "@azure-tools/typespec-azure-rulesets/resource-manager"
+  - '@azure-tools/typespec-azure-rulesets/resource-manager'
+options:
+  '@azure-tools/typespec-autorest':
+    arm-types-dir: '{project-root}/../../../../common-types/resource-management'
+    emit-lro-options: all
+    emitter-output-dir: '{project-root}'
+    examples-dir: '{project-root}/examples'
+    omit-unreachable-types: true
+    output-file: '{version-status}/{version}/openapi.json'
+  '@azure-tools/typespec-go':
+    emitter-output-dir: '{output-dir}/{service-dir}/armdatamigration'
+    fix-const-stuttering: true
+    flavor: azure
+    generate-fakes: true
+    generate-samples: true
+    head-as-boolean: true
+    inject-spans: true
+    module: github.com/Azure/azure-sdk-for-go/{service-dir}/armdatamigration
+    service-dir: sdk/resourcemanager/datamigration
+  '@azure-tools/typespec-java':
+    emitter-output-dir: '{output-dir}/{service-dir}/azure-resourcemanager-datamigration'
+    flavor: azure
+    namespace: com.azure.resourcemanager.datamigration
+    service-name: DataMigration
+  '@azure-tools/typespec-python':
+    api-version: 2025-09-01-preview
+    emitter-output-dir: '{output-dir}/{service-dir}/azure-mgmt-datamigration'
+    flavor: azure
+    generate-sample: true
+    generate-test: true
+    namespace: azure.mgmt.datamigration
+  '@azure-tools/typespec-ts':
+    compatibility-lro: true
+    emitter-output-dir: '{output-dir}/{service-dir}/arm-datamigration'
+    experimental-extensible-enums: true
+    flavor: azure
+    package-details:
+      name: '@azure/arm-datamigration'
+parameters:
+  service-dir:
+    default: sdk/datamigration
