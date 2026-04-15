@@ -7,4 +7,4 @@ using Azure.ClientGenerator.Core;
   "CustomLocationsManagementClient",
   "javascript"
 );
-@@clientName(Microsoft.ExtendedLocation, "CustomLocationsMgmtClient", "python");
+@@clientName(Microsoft.ExtendedLocation, "CustomLocations", "python");
