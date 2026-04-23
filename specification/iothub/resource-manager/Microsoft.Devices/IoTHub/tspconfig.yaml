@@ -1,45 +1,46 @@
-parameters:
-  "service-dir":
-    default: "sdk/iothub"
 emit:
-  - "@azure-tools/typespec-autorest"
-options:
-  "@azure-tools/typespec-autorest":
-    omit-unreachable-types: true
-    emitter-output-dir: "{project-root}"
-    output-file: "{version-status}/{version}/iothub.json"
-    emit-lro-options: "all"
-    arm-types-dir: "{project-root}/../../../../common-types/resource-management"
-    examples-dir: "{project-root}/examples"
-  "@azure-tools/typespec-python":
-    emitter-output-dir: "{output-dir}/{service-dir}/azure-mgmt-iothub"
-    namespace: "azure.mgmt.iothub"
-    generate-test: true
-    generate-sample: true
-    flavor: "azure"
-  "@azure-tools/typespec-java":
-    emitter-output-dir: "{output-dir}/{service-dir}/azure-resourcemanager-iothub"
-    namespace: "com.azure.resourcemanager.iothub"
-    service-name: "IotHub"
-    flavor: azure
-    use-object-for-unknown: true
-  "@azure-tools/typespec-ts":
-    emitter-output-dir: "{output-dir}/{service-dir}/arm-iothub"
-    flavor: azure
-    compatibility-lro: true
-    experimental-extensible-enums: true
-    package-details:
-      name: "@azure/arm-iothub"
-  "@azure-tools/typespec-go":
-    service-dir: "sdk/resourcemanager/iothub"
-    emitter-output-dir: "{output-dir}/{service-dir}/armiothub"
-    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armiothub"
-    fix-const-stuttering: false
-    flavor: "azure"
-    generate-samples: true
-    generate-fakes: true
-    head-as-boolean: true
-    inject-spans: true
+- '@azure-tools/typespec-autorest'
 linter:
   extends:
-    - "@azure-tools/typespec-azure-rulesets/resource-manager"
+  - '@azure-tools/typespec-azure-rulesets/resource-manager'
+options:
+  '@azure-tools/typespec-autorest':
+    arm-types-dir: '{project-root}/../../../../common-types/resource-management'
+    emit-lro-options: all
+    emitter-output-dir: '{project-root}'
+    examples-dir: '{project-root}/examples'
+    omit-unreachable-types: true
+    output-file: '{version-status}/{version}/iothub.json'
+  '@azure-tools/typespec-go':
+    emitter-output-dir: '{output-dir}/{service-dir}/armiothub'
+    fix-const-stuttering: false
+    flavor: azure
+    generate-fakes: true
+    generate-samples: true
+    head-as-boolean: true
+    inject-spans: true
+    module: github.com/Azure/azure-sdk-for-go/{service-dir}/armiothub
+    service-dir: sdk/resourcemanager/iothub
+  '@azure-tools/typespec-java':
+    emitter-output-dir: '{output-dir}/{service-dir}/azure-resourcemanager-iothub'
+    flavor: azure
+    namespace: com.azure.resourcemanager.iothub
+    service-name: IotHub
+    use-object-for-unknown: true
+  '@azure-tools/typespec-python':
+    api-version: 2025-08-01-preview
+    emitter-output-dir: '{output-dir}/{service-dir}/azure-mgmt-iothub'
+    flavor: azure
+    generate-sample: true
+    generate-test: true
+    namespace: azure.mgmt.iothub
+  '@azure-tools/typespec-ts':
+    compatibility-lro: true
+    emitter-output-dir: '{output-dir}/{service-dir}/arm-iothub'
+    experimental-extensible-enums: true
+    flavor: azure
+    package-details:
+      name: '@azure/arm-iothub'
+parameters:
+  service-dir:
+    default: sdk/iothub
